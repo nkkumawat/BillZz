@@ -5,6 +5,7 @@
  */
 package billzz;
 
+import Avator.CreateAvator;
 import billzz.Model.User;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -33,9 +34,15 @@ public class CustomerProfile extends javax.swing.JFrame {
     public void myInit() throws IOException {
         ImageIcon image = new ImageIcon("QR/"+User.id+User.username+".png");
         BufferedImage myPicture = ImageIO.read(new File("QR/"+User.id+User.username+".png"));
-        JLabel picLabel = new JLabel(new ImageIcon(myPicture));
-        picLabel.setBounds(400, 30, 170, 170);
-        add(picLabel);
+        JLabel qrLabel = new JLabel(new ImageIcon(myPicture));
+        qrLabel.setBounds(400, 30, 170, 170);
+        
+        BufferedImage avator = CreateAvator.createImageWithText(User.username.charAt(0)+"");
+        JLabel avatorLabeel = new JLabel(new ImageIcon(avator));
+        avatorLabeel.setBounds(400, 230, 170, 170);
+        
+        add(avatorLabeel);
+        add(qrLabel);
     }
 
     /**

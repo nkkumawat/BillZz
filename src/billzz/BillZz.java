@@ -18,9 +18,12 @@ public class BillZz {
      */
     public static void main(String[] args) {
         // creates new tables and dummy user
+        new Init();
         new SqlConnection();
 //        start SignIn
         new SignIn().setVisible(true);
+//        new AddProducts().setVisible(true);
+//        new CustomerProfile().setVisible(true);
         
     }
     
