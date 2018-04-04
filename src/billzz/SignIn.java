@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package billzz;
+import GenerateQR.GenerateQR;
 import billzz.Database.SqlConnection;
 import billzz.Model.User;
 import java.sql.*;
@@ -132,13 +133,18 @@ public class SignIn extends javax.swing.JFrame {
             String pass = password.getText().toString();
             
             Statement stmt = SqlConnection.getStat();
+            
             System.out.print(user + pass);
             String check = "select * from login where username = '"+user+"' and password = '"+pass+"'";
             ResultSet rs = stmt.executeQuery(check);
             if(rs.next()){
                 User.id = rs.getInt("id");
                 User.username = rs.getString("username");
-                javax.swing.JOptionPane.showMessageDialog(null, "Ho Gya", "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                
+//                don`t modify this this is for Qr code generation
+//                new GenerateQR(String.valueOf(User.id)+User.username);
+//                this.setVisible(false);
+//                new CustomerProfile().setVisible(true);
             } else {
                 javax.swing.JOptionPane.showMessageDialog(null, "User Not exists", "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             } 

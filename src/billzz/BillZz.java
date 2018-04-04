@@ -5,6 +5,7 @@
  */
 package billzz;
 
+import GenerateQR.GenerateQR;
 import billzz.Database.SqlConnection;
 
 /**
@@ -20,6 +21,7 @@ public class BillZz {
         new SqlConnection();
 //        start SignIn
         new SignIn().setVisible(true);
+        
     }
     
 }
