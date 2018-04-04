@@ -32,7 +32,7 @@ public class CustomerProfile extends javax.swing.JFrame {
     }
     public void myInit() throws IOException {
         ImageIcon image = new ImageIcon("QR/"+User.id+User.username+".png");
-        BufferedImage myPicture = ImageIO.read(new File("QR/"+User.id+".png"));
+        BufferedImage myPicture = ImageIO.read(new File("QR/"+User.id+User.username+".png"));
         JLabel picLabel = new JLabel(new ImageIcon(myPicture));
         picLabel.setBounds(400, 30, 170, 170);
         add(picLabel);
