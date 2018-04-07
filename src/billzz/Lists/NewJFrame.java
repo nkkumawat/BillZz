@@ -3,52 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package billzz;
-
-import Avator.CreateAvator;
-import GenerateQR.GenerateQR;
-import billzz.Model.Customer;
-import billzz.Model.User;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+package billzz.Lists;
 
 /**
  *
  * @author sonu
  */
-public class CustomerProfile extends javax.swing.JFrame {
+public class NewJFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form CustomerProfile
+     * Creates new form NewJFrame
      */
-    public CustomerProfile() {
+    public NewJFrame() {
         initComponents();
-        GenerateQR.GenerateQRC(Customer.id+Customer.customerName);
-        
-        try{
-            myInit();
-        }catch(Exception e) {
-            
-        }
-    }
-    public void myInit() throws IOException {
-        System.out.print("QR/"+Customer.id+Customer.customerName);
-        
-        ImageIcon image = new ImageIcon("QR/"+Customer.id+Customer.customerName+".png");
-        BufferedImage myPicture = ImageIO.read(new File("QR/"+Customer.id+Customer.customerName+".png"));
-        JLabel qrLabel = new JLabel(new ImageIcon(myPicture));
-        qrLabel.setBounds(400, 30, 170, 170);
-       
-        BufferedImage avator = CreateAvator.createImageWithText(Customer.customerName.charAt(0)+"");
-        JLabel avatorLabel = new JLabel(new ImageIcon(avator));
-        avatorLabel.setBounds(400, 230, 170, 170);
-        
-        add(avatorLabel);
-        add(qrLabel);
     }
 
     /**
@@ -66,11 +33,11 @@ public class CustomerProfile extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 617, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 451, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
@@ -93,20 +60,20 @@ public class CustomerProfile extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CustomerProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CustomerProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CustomerProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CustomerProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerProfile().setVisible(true);
+                new NewJFrame().setVisible(true);
             }
         });
     }

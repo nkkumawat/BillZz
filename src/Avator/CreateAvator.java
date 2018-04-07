@@ -22,13 +22,13 @@ public class CreateAvator {
     private static Color colors[] = {Color.RED , Color.BLUE , Color.GREEN ,Color.cyan ,Color.gray, Color.magenta,Color.lightGray};
     public static BufferedImage createImageWithText(String charactor){ 
         int index = (int)(Math.random()*(6));
-        BufferedImage bufferedImage = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
+        BufferedImage bufferedImage = new BufferedImage(50, 50, BufferedImage.TYPE_INT_RGB);
         Graphics g = bufferedImage.getGraphics();
         g.setColor(colors[index]);
-        g.fillRect(0,0,100,100);
+        g.fillRect(0,0,50,50);
         g.setColor(Color.WHITE);
-        g.setFont(new Font("TimesRoman", Font.PLAIN, 95)); 
-        g.drawString(charactor.toUpperCase(), 15, 85);
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 42)); 
+        g.drawString(charactor.toUpperCase(), 8, 42);
         return bufferedImage;
 //        String result = "Profile_Pic"+charactor + String.valueOf(index)+".png";
 //        File outputfile = new File(result);

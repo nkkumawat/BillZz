@@ -39,7 +39,7 @@ public class GenerateQR {
 	 * @throws WriterException
 	 * @throws IOException
 	 */
-    public GenerateQR(String text) {
+    public static void GenerateQRC(String text) {
         try{
             start(text);
         }catch(Exception e) {
@@ -47,7 +47,7 @@ public class GenerateQR {
         }
     }
     
-    public void start(String text) throws WriterException, IOException,
+    public static void start(String text) throws WriterException, IOException,
                     NotFoundException {
             String qrCodeData = text;
             String filePath = text+".png";
@@ -77,6 +77,10 @@ public class GenerateQR {
 //                                            ImageIO.read(new FileInputStream(filePath)))));
 //            Result qrCodeResult = new MultiFormatReader().decode(binaryBitmap,  hintMap);
 //            return qrCodeResult.getText();
+//    }
+    
+//    public static void main(String ar[]){
+//        new GenerateQR("nk");
 //    }
 
 }

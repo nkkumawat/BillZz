@@ -142,9 +142,9 @@ public class SignIn extends javax.swing.JFrame {
                 User.username = rs.getString("username");
                 
 //                don`t modify this this is for Qr code generation
-                new GenerateQR(String.valueOf(User.id)+User.username);
+                 GenerateQR.GenerateQRC(String.valueOf(User.id)+User.username);
                 this.setVisible(false);
-                new CustomerProfile().setVisible(true);
+                new HomePage();
             } else {
                 javax.swing.JOptionPane.showMessageDialog(null, "User Not exists", "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             } 
