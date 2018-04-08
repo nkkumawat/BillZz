@@ -42,8 +42,6 @@ public class ProductPanel1 extends javax.swing.JPanel implements ListCellRendere
 
         jLabel2.setText("jLabel2");
 
-        jLabel5.setText("jLabel3");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -51,11 +49,11 @@ public class ProductPanel1 extends javax.swing.JPanel implements ListCellRendere
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jLabel2))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -63,10 +61,10 @@ public class ProductPanel1 extends javax.swing.JPanel implements ListCellRendere
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addContainerGap())
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5))
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -84,7 +82,7 @@ public class ProductPanel1 extends javax.swing.JPanel implements ListCellRendere
        Image newimg = img.getScaledInstance(40, 40,  java.awt.Image.SCALE_SMOOTH);
        this.jLabel1.setIcon(new ImageIcon(value.icon));
        this.jLabel2.setText(value.name);
-       this.jLabel5.setText(value.id);
+//       this.jLabel5.setText(value.id);
        this.setSize(20,5);
        if(isSelected){
          setBackground(list.getSelectionBackground());

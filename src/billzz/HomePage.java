@@ -5,7 +5,6 @@
  */
 package billzz;
 
-import billzz.Lists.ProductList;
 import billzz.Lists.ProductList1;
 import javax.swing.WindowConstants;
 

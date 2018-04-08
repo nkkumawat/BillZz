@@ -12,6 +12,8 @@ import billzz.CustomerProfile;
 import billzz.Database.SqlConnection;
 import billzz.Model.Customer;
 import billzz.Model.Product;
+import billzz.Model.Products;
+import billzz.ProductDetails;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.MenuItem;
@@ -123,17 +125,21 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem3 = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList4 = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        refreshButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+
+        jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -151,9 +157,18 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
         });
         jScrollPane2.setViewportView(jList3);
 
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         jLabel1.setText("Product");
 
+        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         jLabel2.setText("Customers");
+
+        refreshButton.setText("Refresh");
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Customer");
 
@@ -191,12 +206,13 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(refreshButton))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,12 +220,13 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(refreshButton))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addContainerGap())
         );
 
         pack();
@@ -217,32 +234,41 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        new AddCustomer().setVisible(true);
+        AddCustomer a = new AddCustomer();
+        a.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        a.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jList3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList3MouseClicked
         // TODO add your handling code here:
-         Customer.customerName = ((Product)jList3.getSelectedValue()).getname();
-          Customer.id = ((Product)jList3.getSelectedValue()).getId();
-          CustomerProfile c = new CustomerProfile();
-           c.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-           c.setVisible(true);
+//         Customer.customerName = ((Product)jList3.getSelectedValue()).getname();
+         Products.productId = ((Product)jList3.getSelectedValue()).getId();
+         ProductDetails c = new ProductDetails();
+         c.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+         c.setVisible(true);
     }//GEN-LAST:event_jList3MouseClicked
 
     private void jList4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList4MouseClicked
         // TODO add your handling code here:
          Customer.customerName = ((Product)jList4.getSelectedValue()).getname();
-           Customer.id = ((Product)jList4.getSelectedValue()).getId();
-           CustomerProfile c = new CustomerProfile();
-           c.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-           c.setVisible(true);
+         Customer.id = ((Product)jList4.getSelectedValue()).getId();
+         CustomerProfile c = new CustomerProfile();
+         c.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+         c.setVisible(true);
            
     }//GEN-LAST:event_jList4MouseClicked
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        new AddProducts().setVisible(true);
+       AddProducts a = new AddProducts();
+       a.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+       a.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        // TODO add your handling code here:
+        fillProductList();
+        fillCustomerList(); 
+    }//GEN-LAST:event_refreshButtonActionPerformed
 
      
  
@@ -292,8 +318,10 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton refreshButton;
     // End of variables declaration//GEN-END:variables
 
     @Override

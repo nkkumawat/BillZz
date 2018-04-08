@@ -12,4 +12,5 @@ package billzz.Model;
 public class Customer {
     public static String customerName;
     public static String id;
+    public static String email;
 }

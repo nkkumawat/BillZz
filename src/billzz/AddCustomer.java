@@ -6,7 +6,10 @@
 package billzz;
 
 import billzz.Database.SqlConnection;
+import java.util.Date;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -19,6 +22,7 @@ public class AddCustomer extends javax.swing.JFrame {
      */
     public AddCustomer() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(100, 181, 246));
     }
 
     /**
@@ -36,19 +40,11 @@ public class AddCustomer extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         customerName = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
         mobileNumber = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         billAddress = new javax.swing.JTextArea();
-        lastBillDate = new javax.swing.JTextField();
-        lastPayTime = new javax.swing.JTextField();
-        lastBillAmt = new javax.swing.JTextField();
-        unBilledAmt = new javax.swing.JTextField();
         locality = new javax.swing.JTextField();
         submit = new javax.swing.JButton();
 
@@ -67,14 +63,6 @@ public class AddCustomer extends javax.swing.JFrame {
 
         jLabel7.setText("Billing Address");
 
-        jLabel8.setText("Last Bill Date");
-
-        jLabel9.setText("Last Bill Amount");
-
-        jLabel10.setText("Last Pay Time");
-
-        jLabel11.setText("Unbilled Amount");
-
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailActionPerformed(evt);
@@ -91,19 +79,13 @@ public class AddCustomer extends javax.swing.JFrame {
         billAddress.setRows(5);
         jScrollPane2.setViewportView(billAddress);
 
-        lastBillDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lastBillDateActionPerformed(evt);
-            }
-        });
-
         locality.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 localityActionPerformed(evt);
             }
         });
 
-        submit.setText("Submit");
+        submit.setText("Add");
         submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitActionPerformed(evt);
@@ -116,51 +98,24 @@ public class AddCustomer extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(75, 75, 75)
-                        .addComponent(email))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(submit, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel10))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(lastPayTime, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                                    .addComponent(lastBillDate))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel11))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(unBilledAmt)
-                                    .addComponent(lastBillAmt)))))
-                    .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2))
+                        .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(69, 69, 69)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel1)
-                                    .addComponent(locality, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
-                                    .addComponent(customerName)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(51, 51, 51)
-                                .addComponent(mobileNumber)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(28, 28, 28))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(185, 185, 185)
-                .addComponent(submit)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(email)
+                            .addComponent(jLabel1)
+                            .addComponent(locality, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                            .addComponent(customerName, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                            .addComponent(mobileNumber)
+                            .addComponent(jScrollPane2))))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,23 +140,13 @@ public class AddCustomer extends javax.swing.JFrame {
                     .addComponent(mobileNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(lastBillDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(lastBillAmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(lastPayTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(unBilledAmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel7)))
                 .addGap(18, 18, 18)
                 .addComponent(submit)
-                .addGap(12, 12, 12))
+                .addContainerGap())
         );
 
         pack();
@@ -211,21 +156,21 @@ public class AddCustomer extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_emailActionPerformed
 
-    private void lastBillDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastBillDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lastBillDateActionPerformed
-
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         // TODO add your handling code here:
+        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = new Date();
+      
         String customer_name = customerName.getText();
         String locality_txt  = locality.getText();
         String bill_address = billAddress.getText();
         String e_mail = email.getText();
         String mobile_no = mobileNumber.getText();
-        String last_bill_date = lastBillDate.getText();
-        String last_bill_amt = lastBillAmt.getText();
-        String last_pay_time = lastPayTime.getText();
-        String unbilled_amt = unBilledAmt.getText();
+        String last_bill_date = dateFormat.format(date); // todays date
+        String last_bill_amt = 0 +"";
+        String last_pay_time = dateFormat.format(date);
+        String unbilled_amt = 0+"";
         
         if(customer_name.equals("") || locality_txt.equals("") || bill_address.equals("")|| 
                 e_mail.equals("") ||mobile_no.equals("") || last_bill_date.equals("") || last_bill_amt.equals("")|| last_pay_time.equals("")
@@ -295,22 +240,14 @@ public class AddCustomer extends javax.swing.JFrame {
     private javax.swing.JTextField customerName;
     private javax.swing.JTextField email;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField lastBillAmt;
-    private javax.swing.JTextField lastBillDate;
-    private javax.swing.JTextField lastPayTime;
     private javax.swing.JTextField locality;
     private javax.swing.JTextField mobileNumber;
     private javax.swing.JButton submit;
-    private javax.swing.JTextField unBilledAmt;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,6 +20,7 @@ public class AddProducts extends javax.swing.JFrame {
      */
     public AddProducts() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(100, 181, 246));
     }
 
     /**

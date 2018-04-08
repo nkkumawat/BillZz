@@ -54,7 +54,7 @@ public class GenerateQR {
             String charset = "UTF-8"; 
             Map hintMap = new HashMap();
             hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
-            createQRCode(qrCodeData, filePath, charset, hintMap, 200, 200);
+            createQRCode(qrCodeData, filePath, charset, hintMap, 100, 100);
             System.out.println("QR Code image created successfully!");
 //            System.out.println("Data read from QR Code: " + readQRCode(filePath, charset, hintMap));
 
