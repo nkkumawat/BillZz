@@ -67,7 +67,7 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
             g2d.drawImage(inputImage, 0, 0, 50, 50, null);
             g2d.dispose();
             refreshLabel.setIcon(new ImageIcon(outputImage));
-            
+            refreshLabel.setToolTipText("Refresh");
             
             
             File inputFile1 = new File("./QR/add.png");
@@ -77,7 +77,10 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
             g2d1.drawImage(inputImage1, 0, 0, 50, 50, null);
             g2d1.dispose();
             addCustomerLabel.setIcon(new ImageIcon(outputImage1));
+            addCustomerLabel.setToolTipText("Add Customer");
+                    
             addProductLabel.setIcon(new ImageIcon(outputImage1));
+            addProductLabel.setToolTipText("Add Product");
             
             productText.setForeground(Color.white);
             customerText.setForeground(Color.white);

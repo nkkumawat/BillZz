@@ -15,6 +15,8 @@ import billzz.Model.User;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import billzz.Model.Product;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -46,12 +48,28 @@ public class CustomerProfile extends javax.swing.JFrame {
      
     }
     public void myInit()  {
+        customerName.setForeground(Color.white);
+        customerAddress.setForeground(Color.white);
+        customerEmail.setForeground(Color.white);
+        customerMobile.setForeground(Color.white);
+        customerLastPayed.setForeground(Color.white);
+        cutomerLastPaidDate.setForeground(Color.white);
+        customerNewBill.setForeground(Color.white);
+        myProducts.setForeground(Color.white);
+        
+        
+        
+        
         try{
             System.out.print("QR/"+Customer.id+Customer.customerName);
             BufferedImage myPicture = ImageIO.read(new File("QR/"+Customer.id+Customer.customerName+".png"));
             qrCodeLabel.setIcon(new ImageIcon(myPicture));
             BufferedImage avator = CreateAvator.createImageWithText(Customer.customerName.charAt(0)+"");
-            imageLabel.setIcon(new ImageIcon(avator));
+            BufferedImage outputImage = new BufferedImage(100,100, avator.getType());
+            Graphics2D g2d = outputImage.createGraphics();
+            g2d.drawImage(avator, 0, 0, 100, 100, null);
+            g2d.dispose();
+            imageLabel.setIcon(new ImageIcon(outputImage));
 
             Statement stmt = SqlConnection.getStat();
             String sql = "select * from customer where id = '"+Customer.id+"'";
@@ -85,10 +103,56 @@ public class CustomerProfile extends javax.swing.JFrame {
                 totalBill*=diff;
                 totalBill += unBilled;
                 customerNewBill.setText("New Bill : " + totalBill);
+                
+                
+                File inputFile = new File("./QR/add.png");
+                BufferedImage inputImage = ImageIO.read(inputFile);
+                outputImage = new BufferedImage(30,30, inputImage.getType());
+                g2d = outputImage.createGraphics();
+                g2d.drawImage(inputImage, 0, 0, 30, 30, null);
+                g2d.dispose();
+                addProductsLabel.setIcon(new ImageIcon(outputImage));
+                addProductsLabel.setToolTipText("Add Product");
+                
+                
+                File inputFile1 = new File("./QR/pay.png");
+                BufferedImage inputImage1 = ImageIO.read(inputFile1);
+                BufferedImage outputImage1 = new BufferedImage(30,30, inputImage1.getType());
+                Graphics2D g2d1 = outputImage1.createGraphics();
+                g2d1.drawImage(inputImage1, 0, 0, 30, 30, null);
+                g2d1.dispose();
+                paymentLabel.setIcon(new ImageIcon(outputImage1));
+                paymentLabel.setToolTipText("Payment Record");
+                
+                inputFile1 = new File("./QR/history.png");
+                inputImage1 = ImageIO.read(inputFile1);
+                outputImage1 = new BufferedImage(30,30, inputImage1.getType());
+                g2d1 = outputImage1.createGraphics();
+                g2d1.drawImage(inputImage1, 0, 0, 30, 30, null);
+                g2d1.dispose();
+                payHistoryLabel.setIcon(new ImageIcon(outputImage1));
+                payHistoryLabel.setToolTipText("Payment History");
+                
+                inputFile1 = new File("./QR/refresh.png");
+                inputImage1 = ImageIO.read(inputFile1);
+                outputImage1 = new BufferedImage(30,30, inputImage1.getType());
+                g2d1 = outputImage1.createGraphics();
+                g2d1.drawImage(inputImage1, 0, 0, 30, 30, null);
+                g2d1.dispose();
+                refreshLabel.setIcon(new ImageIcon(outputImage1));
+                refreshLabel.setToolTipText("Refresh");
+                
+                
+                
             }
         }catch(Exception e) {
                System.out.print(e.toString());
         }  
+        
+            
+            
+            
+            
     }
     public void fillProducts() {
         DefaultListModel<Product> defaultListModel = new DefaultListModel<>();
@@ -137,16 +201,17 @@ public class CustomerProfile extends javax.swing.JFrame {
         customerLastPayed = new javax.swing.JLabel();
         cutomerLastPaidDate = new javax.swing.JLabel();
         customerNewBill = new javax.swing.JLabel();
-        addProductsButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         myProductsList = new javax.swing.JList<>();
-        refresh = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        payHistoryButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        myProducts = new javax.swing.JLabel();
+        addProductsLabel = new javax.swing.JLabel();
+        paymentLabel = new javax.swing.JLabel();
+        payHistoryLabel = new javax.swing.JLabel();
+        refreshLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        customerName.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         customerName.setText("Name");
 
         customerAddress.setText("Address");
@@ -155,43 +220,40 @@ public class CustomerProfile extends javax.swing.JFrame {
 
         customerMobile.setText("Mobile");
 
-        customerLastPayed.setText("Lat payed");
+        customerLastPayed.setText("Last payed");
 
         cutomerLastPaidDate.setText("Date");
 
         customerNewBill.setText("New Bill");
 
-        addProductsButton.setText("Add Products");
-        addProductsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addProductsButtonActionPerformed(evt);
-            }
-        });
-
         jScrollPane1.setViewportView(myProductsList);
 
-        refresh.setText("Refresh");
-        refresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshActionPerformed(evt);
+        myProducts.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
+        myProducts.setText("My Products");
+
+        addProductsLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addProductsLabelMouseClicked(evt);
             }
         });
 
-        jButton1.setText("Payment");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        paymentLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                paymentLabelMouseClicked(evt);
             }
         });
 
-        payHistoryButton.setText("Pay History");
-        payHistoryButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                payHistoryButtonActionPerformed(evt);
+        payHistoryLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                payHistoryLabelMouseClicked(evt);
             }
         });
 
-        jLabel1.setText("My Products");
+        refreshLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                refreshLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,108 +263,108 @@ public class CustomerProfile extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(customerName)
-                            .addComponent(customerNewBill)
                             .addComponent(customerAddress)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(customerEmail)
-                                .addGap(18, 18, 18)
-                                .addComponent(customerMobile))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(customerLastPayed)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cutomerLastPaidDate)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(addProductsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(refresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(payHistoryButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cutomerLastPaidDate))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(customerEmail)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(customerMobile))
+                            .addComponent(customerNewBill)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(myProducts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(qrCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
-                                .addComponent(qrCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(addProductsLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(paymentLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(payHistoryLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(refreshLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(customerNewBill))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(customerName)
-                            .addComponent(addProductsButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(customerAddress)
-                            .addComponent(jButton1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(customerEmail)
-                            .addComponent(customerMobile)
-                            .addComponent(payHistoryButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(customerLastPayed)
-                                .addComponent(cutomerLastPaidDate))
-                            .addComponent(refresh))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(qrCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(customerName)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(customerAddress)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(customerMobile)
+                                    .addComponent(customerEmail))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(customerLastPayed)
+                                    .addComponent(cutomerLastPaidDate))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(customerNewBill)
+                        .addGap(57, 57, 57)
+                        .addComponent(myProducts)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(addProductsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(paymentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(payHistoryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(refreshLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(210, 210, 210)
+                        .addComponent(qrCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addProductsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductsButtonActionPerformed
+    private void addProductsLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addProductsLabelMouseClicked
         // TODO add your handling code here:
         SubscribeProducts s = new SubscribeProducts();
         s.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         s.setVisible(true);
-    }//GEN-LAST:event_addProductsButtonActionPerformed
+    }//GEN-LAST:event_addProductsLabelMouseClicked
 
-    private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
-        // TODO add your handling code here:
-        fillProducts();
-        myInit();
-    }//GEN-LAST:event_refreshActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void paymentLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paymentLabelMouseClicked
         // TODO add your handling code here:
         Bill.totalBill = totalBill;
         RecordPayment s = new RecordPayment();
         s.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         s.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_paymentLabelMouseClicked
 
-    private void payHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payHistoryButtonActionPerformed
+    private void payHistoryLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_payHistoryLabelMouseClicked
         // TODO add your handling code here:
         PayHistory s = new PayHistory();
         s.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         s.setVisible(true);
-    }//GEN-LAST:event_payHistoryButtonActionPerformed
+    }//GEN-LAST:event_payHistoryLabelMouseClicked
+
+    private void refreshLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshLabelMouseClicked
+        // TODO add your handling code here:
+        fillProducts();
+        myInit();
+    }//GEN-LAST:event_refreshLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -340,7 +402,7 @@ public class CustomerProfile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addProductsButton;
+    private javax.swing.JLabel addProductsLabel;
     private javax.swing.JLabel customerAddress;
     private javax.swing.JLabel customerEmail;
     private javax.swing.JLabel customerLastPayed;
@@ -349,12 +411,12 @@ public class CustomerProfile extends javax.swing.JFrame {
     private javax.swing.JLabel customerNewBill;
     private javax.swing.JLabel cutomerLastPaidDate;
     private javax.swing.JLabel imageLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel myProducts;
     private javax.swing.JList<Product> myProductsList;
-    private javax.swing.JButton payHistoryButton;
+    private javax.swing.JLabel payHistoryLabel;
+    private javax.swing.JLabel paymentLabel;
     private javax.swing.JLabel qrCodeLabel;
-    private javax.swing.JButton refresh;
+    private javax.swing.JLabel refreshLabel;
     // End of variables declaration//GEN-END:variables
 }
