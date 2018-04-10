@@ -19,7 +19,7 @@ import javax.imageio.ImageIO;
  * @author sonu
  */
 public class CreateAvator {
-    private static Color colors[] = {Color.RED , Color.BLUE , Color.GREEN ,Color.cyan ,Color.gray, Color.magenta,Color.lightGray};
+    private static Color colors[] = {Color.decode("#00b8d4") , Color.decode("#00695c") , Color.decode("#ab47bc") ,Color.decode("#43a047") ,Color.decode("#f57f17"), Color.decode("#d84315"),Color.decode("#546e7a")};
     public static BufferedImage createImageWithText(String charactor){ 
         int index = (int)(Math.random()*(6));
         BufferedImage bufferedImage = new BufferedImage(50, 50, BufferedImage.TYPE_INT_RGB);

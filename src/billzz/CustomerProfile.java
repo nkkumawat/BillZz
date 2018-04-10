@@ -74,7 +74,7 @@ public class CustomerProfile extends javax.swing.JFrame {
                 Date secondDate = dateFormat.parse(todayDate);
                 
                 long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
-                long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+                long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS)+1;
                 String sql1 = "select sum(B.product_rate * A.qty) from subscription A , product B where A.customer_id = '"+Customer.id+"'\n"
                         + "and A.product_id = B.id";
                 ResultSet rs1 = stmt.executeQuery(sql1);

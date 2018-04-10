@@ -9,7 +9,6 @@ import billzz.Database.SqlConnection;
 import billzz.Model.User;
 import java.sql.*;
 
-
 /**
  *
  * @author sonu
@@ -21,7 +20,6 @@ public class SignIn extends javax.swing.JFrame {
      */
     public SignIn() {
         initComponents();
-  
         getContentPane().setBackground(new java.awt.Color(100, 181, 246));
     }
 

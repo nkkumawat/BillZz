@@ -14,7 +14,10 @@ import billzz.Model.Customer;
 import billzz.Model.Product;
 import billzz.Model.Products;
 import billzz.ProductDetails;
+import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Container;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.MenuItem;
 
@@ -25,10 +28,14 @@ import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -52,6 +59,34 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
    
     public void myInits() {
        addFocusListener(new CustomFocusListener());  
+        try {
+            File inputFile = new File("./QR/refresh.png");
+            BufferedImage inputImage = ImageIO.read(inputFile);
+            BufferedImage outputImage = new BufferedImage(50,50, inputImage.getType());
+            Graphics2D g2d = outputImage.createGraphics();
+            g2d.drawImage(inputImage, 0, 0, 50, 50, null);
+            g2d.dispose();
+            refreshLabel.setIcon(new ImageIcon(outputImage));
+            
+            
+            
+            File inputFile1 = new File("./QR/add.png");
+            BufferedImage inputImage1 = ImageIO.read(inputFile1);
+            BufferedImage outputImage1 = new BufferedImage(50,50, inputImage1.getType());
+            Graphics2D g2d1 = outputImage1.createGraphics();
+            g2d1.drawImage(inputImage1, 0, 0, 50, 50, null);
+            g2d1.dispose();
+            addCustomerLabel.setIcon(new ImageIcon(outputImage1));
+            addProductLabel.setIcon(new ImageIcon(outputImage1));
+            
+            productText.setForeground(Color.white);
+            customerText.setForeground(Color.white);
+            productText1.setForeground(Color.white);
+            customerText1.setForeground(Color.white);
+            refreshText.setForeground(Color.white);
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
     } 
     
     class CustomFocusListener implements FocusListener{
@@ -130,14 +165,15 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
         jList4 = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        refreshButton = new javax.swing.JButton();
+        productText = new javax.swing.JLabel();
+        customerText = new javax.swing.JLabel();
+        refreshLabel = new javax.swing.JLabel();
+        customerText1 = new javax.swing.JLabel();
+        addCustomerLabel = new javax.swing.JLabel();
+        productText1 = new javax.swing.JLabel();
+        addProductLabel = new javax.swing.JLabel();
+        refreshText = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
 
         jMenuItem3.setText("jMenuItem3");
 
@@ -157,43 +193,37 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
         });
         jScrollPane2.setViewportView(jList3);
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel1.setText("Product");
+        productText.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        productText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        productText.setText("Product");
 
-        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel2.setText("Customers");
+        customerText.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        customerText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        customerText.setText("Customers");
 
-        refreshButton.setText("Refresh");
-        refreshButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshButtonActionPerformed(evt);
+        refreshLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                refreshLabelMouseClicked(evt);
             }
         });
 
-        jMenu1.setText("Customer");
+        customerText1.setText("Customer");
 
-        jMenuItem1.setText("Add Customer");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+        addCustomerLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addCustomerLabelMouseClicked(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu1);
+        productText1.setText("Product");
 
-        jMenu2.setText("Product");
-
-        jMenuItem2.setText("Add Product");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+        addProductLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addProductLabelMouseClicked(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
 
-        jMenuBar1.add(jMenu2);
-
+        refreshText.setText("Refresh");
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -203,41 +233,54 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(productText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(customerText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addCustomerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(refreshLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addProductLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(refreshButton))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(customerText1)
+                            .addComponent(productText1)
+                            .addComponent(refreshText))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(refreshButton))
+                    .addComponent(customerText)
+                    .addComponent(productText))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(customerText1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addCustomerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(productText1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addProductLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(refreshText)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(refreshLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        AddCustomer a = new AddCustomer();
-        a.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        a.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jList3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList3MouseClicked
         // TODO add your handling code here:
@@ -258,17 +301,25 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
            
     }//GEN-LAST:event_jList4MouseClicked
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       AddProducts a = new AddProducts();
-       a.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-       a.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+    private void refreshLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshLabelMouseClicked
         // TODO add your handling code here:
         fillProductList();
         fillCustomerList(); 
-    }//GEN-LAST:event_refreshButtonActionPerformed
+    }//GEN-LAST:event_refreshLabelMouseClicked
+
+    private void addCustomerLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addCustomerLabelMouseClicked
+        // TODO add your handling code here:
+        AddCustomer a = new AddCustomer();
+        a.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        a.setVisible(true);
+    }//GEN-LAST:event_addCustomerLabelMouseClicked
+
+    private void addProductLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addProductLabelMouseClicked
+        // TODO add your handling code here:
+       AddProducts a = new AddProducts();
+       a.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+       a.setVisible(true);
+    }//GEN-LAST:event_addProductLabelMouseClicked
 
      
  
@@ -309,19 +360,20 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel addCustomerLabel;
+    private javax.swing.JLabel addProductLabel;
+    private javax.swing.JLabel customerText;
+    private javax.swing.JLabel customerText1;
     private javax.swing.JList<Product> jList3;
     private javax.swing.JList<Product> jList4;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JButton refreshButton;
+    private javax.swing.JLabel productText;
+    private javax.swing.JLabel productText1;
+    private javax.swing.JLabel refreshLabel;
+    private javax.swing.JLabel refreshText;
     // End of variables declaration//GEN-END:variables
 
     @Override
