@@ -120,7 +120,7 @@ public class SignIn extends javax.swing.JFrame {
             String user = username.getText();
             String pass = password.getText().toString();
 
-            Statement stmt = SqlConnection.getStat();
+            Statement stmt = SqlConnection.getStatLogin();
 
             System.out.print(user + pass);
             String check = "select * from login where username = '"+user+"' and password = '"+pass+"'";
@@ -131,6 +131,7 @@ public class SignIn extends javax.swing.JFrame {
 
                 //                don`t modify this this is for Qr code generation
                 GenerateQR.GenerateQRC(String.valueOf(User.id)+User.username);
+                SqlConnection.initilizeDataBase();
                 this.setVisible(false);
                 new HomePage();
             } else {
@@ -150,7 +151,7 @@ public class SignIn extends javax.swing.JFrame {
         try{
             String user = username.getText();
             String pass = password.getText().toString();
-            Statement stmt = SqlConnection.getStat();
+            Statement stmt = SqlConnection.getStatLogin();
             System.out.print(user + pass);
             String check = "select * from login where username = '"+user+"' and password = '"+pass+"'";
             ResultSet rs = stmt.executeQuery(check);
