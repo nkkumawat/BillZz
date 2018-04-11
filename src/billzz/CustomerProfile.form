@@ -61,13 +61,20 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Component id="addProductsLabel" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="paymentLabel" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="payHistoryLabel" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="updateLabel" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                  <Component id="addProductsLabel" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="paymentLabel" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="payHistoryLabel" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="refreshLabel" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="refreshLabel" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="deleteLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -113,7 +120,11 @@
                       <Component id="payHistoryLabel" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="refreshLabel" min="-2" pref="30" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="updateLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="deleteLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
                       <Component id="qrCodeLabel" min="-2" pref="109" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -211,6 +222,23 @@
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="refreshLabelMouseClicked"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="updateLabel">
+      <Properties>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[30, 30]"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="updateLabelMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="deleteLabel">
+      <Properties>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[30, 30]"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

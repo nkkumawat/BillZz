@@ -31,5 +31,14 @@ public class Init {
                 javax.swing.JOptionPane.showMessageDialog(null, e.getMessage(), "InfoBox: " , javax.swing.JOptionPane.INFORMATION_MESSAGE);
             }
         }
+        theDir = new File("Database");
+        if (!theDir.exists()) {
+            try{
+                theDir.mkdir();
+            } 
+            catch(SecurityException e){
+                javax.swing.JOptionPane.showMessageDialog(null, e.getMessage(), "InfoBox: " , javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
     }
 }

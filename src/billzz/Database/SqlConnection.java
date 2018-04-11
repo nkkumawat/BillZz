@@ -62,7 +62,7 @@ public class SqlConnection {
     public static Statement getStat() throws ClassNotFoundException, SQLException{
         if(con1 == null){
             Class.forName("org.sqlite.JDBC");
-            String url = "jdbc:sqlite:./"+User.id+".db";
+            String url = "jdbc:sqlite:./Database/"+User.id+".db";
             con1 = DriverManager.getConnection(url);
             stmt1 = con1.createStatement();
         }
@@ -71,7 +71,7 @@ public class SqlConnection {
     public static Statement getStatLogin() throws ClassNotFoundException, SQLException{
         if(con == null){
             Class.forName("org.sqlite.JDBC");
-            String url = "jdbc:sqlite:./login.db";
+            String url = "jdbc:sqlite:./Database/login.db";
             con = DriverManager.getConnection(url);
             stmt = con.createStatement();
         }

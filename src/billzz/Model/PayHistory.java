@@ -5,27 +5,20 @@
  */
 package billzz.Model;
 
-import java.awt.image.BufferedImage;
-
 /**
  *
  * @author sonu
  */
-public class Payment {
+public class PayHistory {
     public String billAmount;
     public String billDate;
     public String mode;
- 
+    public String customer;
 
-    public Payment(String billAmount, String billDate, String mode) {
+    public PayHistory(String billAmount, String billDate, String mode , String customer) {
         this.billAmount = billAmount;
         this.billDate = billDate;
         this.mode = mode;
+        this.customer = customer;
     }
-//    public String getname(){
-//        return this.name;
-//    }
-//    public String getId(){
-//        return this.id;
-//    }
 }

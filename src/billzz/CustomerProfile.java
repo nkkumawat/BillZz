@@ -56,14 +56,11 @@ public class CustomerProfile extends javax.swing.JFrame {
         cutomerLastPaidDate.setForeground(Color.white);
         customerNewBill.setForeground(Color.white);
         myProducts.setForeground(Color.white);
-        
-        
-        
-        
         try{
             System.out.print("QR/"+Customer.id+Customer.customerName);
             BufferedImage myPicture = ImageIO.read(new File("QR/"+Customer.id+Customer.customerName+".png"));
             qrCodeLabel.setIcon(new ImageIcon(myPicture));
+            
             BufferedImage avator = CreateAvator.createImageWithText(Customer.customerName.charAt(0)+"");
             BufferedImage outputImage = new BufferedImage(100,100, avator.getType());
             Graphics2D g2d = outputImage.createGraphics();
@@ -104,55 +101,28 @@ public class CustomerProfile extends javax.swing.JFrame {
                 totalBill += unBilled;
                 customerNewBill.setText("New Bill : " + totalBill);
                 
-                
-                File inputFile = new File("./QR/add.png");
-                BufferedImage inputImage = ImageIO.read(inputFile);
-                outputImage = new BufferedImage(30,30, inputImage.getType());
-                g2d = outputImage.createGraphics();
-                g2d.drawImage(inputImage, 0, 0, 30, 30, null);
-                g2d.dispose();
-                addProductsLabel.setIcon(new ImageIcon(outputImage));
+                addProductsLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/add.png" ,30)));
                 addProductsLabel.setToolTipText("Add Product");
                 
-                
-                File inputFile1 = new File("./QR/pay.png");
-                BufferedImage inputImage1 = ImageIO.read(inputFile1);
-                BufferedImage outputImage1 = new BufferedImage(30,30, inputImage1.getType());
-                Graphics2D g2d1 = outputImage1.createGraphics();
-                g2d1.drawImage(inputImage1, 0, 0, 30, 30, null);
-                g2d1.dispose();
-                paymentLabel.setIcon(new ImageIcon(outputImage1));
+                paymentLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/pay.png",30)));
                 paymentLabel.setToolTipText("Payment Record");
                 
-                inputFile1 = new File("./QR/history.png");
-                inputImage1 = ImageIO.read(inputFile1);
-                outputImage1 = new BufferedImage(30,30, inputImage1.getType());
-                g2d1 = outputImage1.createGraphics();
-                g2d1.drawImage(inputImage1, 0, 0, 30, 30, null);
-                g2d1.dispose();
-                payHistoryLabel.setIcon(new ImageIcon(outputImage1));
+                payHistoryLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/history.png",30)));
                 payHistoryLabel.setToolTipText("Payment History");
                 
-                inputFile1 = new File("./QR/refresh.png");
-                inputImage1 = ImageIO.read(inputFile1);
-                outputImage1 = new BufferedImage(30,30, inputImage1.getType());
-                g2d1 = outputImage1.createGraphics();
-                g2d1.drawImage(inputImage1, 0, 0, 30, 30, null);
-                g2d1.dispose();
-                refreshLabel.setIcon(new ImageIcon(outputImage1));
+                refreshLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/refresh.png",30)));
                 refreshLabel.setToolTipText("Refresh");
                 
+                updateLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/update.png",30)));
+                updateLabel.setToolTipText("Refresh");
                 
-                
+                deleteLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/delete.png",30)));
+                deleteLabel.setToolTipText("Refresh");
+                  
             }
         }catch(Exception e) {
                System.out.print(e.toString());
-        }  
-        
-            
-            
-            
-            
+        }      
     }
     public void fillProducts() {
         DefaultListModel<Product> defaultListModel = new DefaultListModel<>();
@@ -208,6 +178,8 @@ public class CustomerProfile extends javax.swing.JFrame {
         paymentLabel = new javax.swing.JLabel();
         payHistoryLabel = new javax.swing.JLabel();
         refreshLabel = new javax.swing.JLabel();
+        updateLabel = new javax.swing.JLabel();
+        deleteLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -255,6 +227,15 @@ public class CustomerProfile extends javax.swing.JFrame {
             }
         });
 
+        updateLabel.setPreferredSize(new java.awt.Dimension(30, 30));
+        updateLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateLabelMouseClicked(evt);
+            }
+        });
+
+        deleteLabel.setPreferredSize(new java.awt.Dimension(30, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -289,11 +270,16 @@ public class CustomerProfile extends javax.swing.JFrame {
                         .addGap(12, 12, 12))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(updateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(addProductsLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(paymentLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(payHistoryLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(refreshLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(addProductsLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(paymentLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(payHistoryLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(refreshLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(deleteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -330,7 +316,11 @@ public class CustomerProfile extends javax.swing.JFrame {
                         .addComponent(payHistoryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(refreshLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(210, 210, 210)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(updateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(164, 164, 164)
                         .addComponent(qrCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -365,6 +355,13 @@ public class CustomerProfile extends javax.swing.JFrame {
         fillProducts();
         myInit();
     }//GEN-LAST:event_refreshLabelMouseClicked
+
+    private void updateLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateLabelMouseClicked
+        // TODO add your handling code here:
+        Update s = new Update();
+        s.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        s.setVisible(true);
+    }//GEN-LAST:event_updateLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -410,6 +407,7 @@ public class CustomerProfile extends javax.swing.JFrame {
     private javax.swing.JLabel customerName;
     private javax.swing.JLabel customerNewBill;
     private javax.swing.JLabel cutomerLastPaidDate;
+    private javax.swing.JLabel deleteLabel;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel myProducts;
@@ -418,5 +416,6 @@ public class CustomerProfile extends javax.swing.JFrame {
     private javax.swing.JLabel paymentLabel;
     private javax.swing.JLabel qrCodeLabel;
     private javax.swing.JLabel refreshLabel;
+    private javax.swing.JLabel updateLabel;
     // End of variables declaration//GEN-END:variables
 }

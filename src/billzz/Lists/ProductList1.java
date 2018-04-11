@@ -13,34 +13,24 @@ import billzz.Database.SqlConnection;
 import billzz.Model.Customer;
 import billzz.Model.Product;
 import billzz.Model.Products;
+import billzz.PayRecordHistoryAll;
 import billzz.ProductDetails;
-import java.awt.CardLayout;
+import billzz.SetIcons;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.MenuItem;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
+
 import javax.swing.WindowConstants;
 
 /**
@@ -60,33 +50,23 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
     public void myInits() {
        addFocusListener(new CustomFocusListener());  
         try {
-            File inputFile = new File("./QR/refresh.png");
-            BufferedImage inputImage = ImageIO.read(inputFile);
-            BufferedImage outputImage = new BufferedImage(50,50, inputImage.getType());
-            Graphics2D g2d = outputImage.createGraphics();
-            g2d.drawImage(inputImage, 0, 0, 50, 50, null);
-            g2d.dispose();
-            refreshLabel.setIcon(new ImageIcon(outputImage));
+            
+            refreshLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/add.png" , 50)));
             refreshLabel.setToolTipText("Refresh");
-            
-            
-            File inputFile1 = new File("./QR/add.png");
-            BufferedImage inputImage1 = ImageIO.read(inputFile1);
-            BufferedImage outputImage1 = new BufferedImage(50,50, inputImage1.getType());
-            Graphics2D g2d1 = outputImage1.createGraphics();
-            g2d1.drawImage(inputImage1, 0, 0, 50, 50, null);
-            g2d1.dispose();
-            addCustomerLabel.setIcon(new ImageIcon(outputImage1));
+ 
+            addCustomerLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/add.png" ,50)));
             addCustomerLabel.setToolTipText("Add Customer");
                     
-            addProductLabel.setIcon(new ImageIcon(outputImage1));
+            addProductLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/refresh.png",50)));
             addProductLabel.setToolTipText("Add Product");
             
+            payHistoryLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/history.png",50)));
+            addProductLabel.setToolTipText("Pay History");
             productText.setForeground(Color.white);
             customerText.setForeground(Color.white);
-            productText1.setForeground(Color.white);
-            customerText1.setForeground(Color.white);
-            refreshText.setForeground(Color.white);
+//            productText1.setForeground(Color.white);
+//            customerText1.setForeground(Color.white);
+//            refreshText.setForeground(Color.white);
         } catch (Exception ex) {
             System.out.println(ex.toString());
         }
@@ -171,11 +151,9 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
         productText = new javax.swing.JLabel();
         customerText = new javax.swing.JLabel();
         refreshLabel = new javax.swing.JLabel();
-        customerText1 = new javax.swing.JLabel();
         addCustomerLabel = new javax.swing.JLabel();
-        productText1 = new javax.swing.JLabel();
         addProductLabel = new javax.swing.JLabel();
-        refreshText = new javax.swing.JLabel();
+        payHistoryLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         jMenuItem3.setText("jMenuItem3");
@@ -210,15 +188,11 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
             }
         });
 
-        customerText1.setText("Customer");
-
         addCustomerLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addCustomerLabelMouseClicked(evt);
             }
         });
-
-        productText1.setText("Product");
 
         addProductLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -226,7 +200,12 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
             }
         });
 
-        refreshText.setText("Refresh");
+        payHistoryLabel.setPreferredSize(new java.awt.Dimension(50, 50));
+        payHistoryLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                payHistoryLabelMouseClicked(evt);
+            }
+        });
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -248,11 +227,8 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
                     .addComponent(refreshLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(addProductLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(customerText1)
-                            .addComponent(productText1)
-                            .addComponent(refreshText))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(payHistoryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -265,19 +241,15 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(customerText1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addCustomerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(productText1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addProductLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(refreshText)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(refreshLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addCustomerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(addProductLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(refreshLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(payHistoryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );
@@ -324,6 +296,13 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
        a.setVisible(true);
     }//GEN-LAST:event_addProductLabelMouseClicked
 
+    private void payHistoryLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_payHistoryLabelMouseClicked
+        // TODO add your handling code here:
+       PayRecordHistoryAll a = new PayRecordHistoryAll();
+       a.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+       a.setVisible(true);
+    }//GEN-LAST:event_payHistoryLabelMouseClicked
+
      
  
  
@@ -366,17 +345,15 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
     private javax.swing.JLabel addCustomerLabel;
     private javax.swing.JLabel addProductLabel;
     private javax.swing.JLabel customerText;
-    private javax.swing.JLabel customerText1;
     private javax.swing.JList<Product> jList3;
     private javax.swing.JList<Product> jList4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel payHistoryLabel;
     private javax.swing.JLabel productText;
-    private javax.swing.JLabel productText1;
     private javax.swing.JLabel refreshLabel;
-    private javax.swing.JLabel refreshText;
     // End of variables declaration//GEN-END:variables
 
     @Override
