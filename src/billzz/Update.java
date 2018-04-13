@@ -9,6 +9,7 @@ import Avator.CreateAvator;
 import billzz.Database.SqlConnection;
 import billzz.Model.Customer;
 import billzz.Model.Product;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -25,6 +26,14 @@ public class Update extends javax.swing.JFrame {
     public Update() {
         initComponents();
         getContentPane().setBackground(new java.awt.Color(100, 181, 246));
+        BillAddLabel.setForeground(Color.WHITE);
+        CustomerInfoLabel.setForeground(Color.WHITE);
+        EmailLabel.setForeground(Color.WHITE);
+        LocalityLabel.setForeground(Color.WHITE);
+        MobileNoLabel.setForeground(Color.WHITE);
+        NameLabel.setForeground(Color.WHITE);
+        jButton1.setBackground(Color.decode("#50AF00"));
+        jButton1.setForeground(Color.WHITE);
         try{
              Statement stmt = SqlConnection.getStat();
             String sql = "select * from customer where id = '"+Customer.id+"'";
@@ -52,12 +61,12 @@ public class Update extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        name = new javax.swing.JLabel();
-        locality = new javax.swing.JLabel();
-        email = new javax.swing.JLabel();
-        mobile = new javax.swing.JLabel();
-        address = new javax.swing.JLabel();
+        CustomerInfoLabel = new javax.swing.JLabel();
+        NameLabel = new javax.swing.JLabel();
+        LocalityLabel = new javax.swing.JLabel();
+        EmailLabel = new javax.swing.JLabel();
+        MobileNoLabel = new javax.swing.JLabel();
+        BillAddLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         editName = new javax.swing.JTextField();
         editLocality = new javax.swing.JTextField();
@@ -68,26 +77,26 @@ public class Update extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Customer Information");
+        CustomerInfoLabel.setFont(new java.awt.Font("Ubuntu", 1, 28)); // NOI18N
+        CustomerInfoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CustomerInfoLabel.setText("CUSTOMER INFORMATION");
 
-        name.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        name.setText("Full Name");
+        NameLabel.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
+        NameLabel.setText("Full Name");
 
-        locality.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        locality.setText("Locality");
+        LocalityLabel.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
+        LocalityLabel.setText("Locality");
 
-        email.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        email.setText("E-mail");
+        EmailLabel.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
+        EmailLabel.setText("E-mail");
 
-        mobile.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        mobile.setText("Mobile No.");
+        MobileNoLabel.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
+        MobileNoLabel.setText("Mobile No.");
 
-        address.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        address.setText("Billing Address");
+        BillAddLabel.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
+        BillAddLabel.setText("Billing Address");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
         jButton1.setText("Update");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +104,16 @@ public class Update extends javax.swing.JFrame {
             }
         });
 
+        editName.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+
+        editLocality.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+
+        editEmail.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+
+        editMobile.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+
         editAddress.setColumns(20);
+        editAddress.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
         editAddress.setRows(5);
         jScrollPane1.setViewportView(editAddress);
 
@@ -104,64 +122,59 @@ public class Update extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(name)
-                    .addComponent(locality)
-                    .addComponent(email)
-                    .addComponent(mobile)
-                    .addComponent(address))
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(editName)
-                    .addComponent(editLocality)
-                    .addComponent(editEmail)
-                    .addComponent(editMobile)
-                    .addComponent(jScrollPane1))
-                .addGap(89, 89, 89))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(89, 89, 89))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jButton1)
-                        .addGap(33, 33, 33))))
+                .addContainerGap()
+                .addComponent(CustomerInfoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(NameLabel)
+                            .addComponent(LocalityLabel)
+                            .addComponent(EmailLabel)
+                            .addComponent(MobileNoLabel)
+                            .addComponent(BillAddLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(editMobile, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(editEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(editLocality, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(editName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(name))
-                    .addComponent(editName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addComponent(CustomerInfoLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NameLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(locality)
+                    .addComponent(LocalityLabel)
                     .addComponent(editLocality, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(email)
+                    .addComponent(EmailLabel)
                     .addComponent(editEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(mobile)
+                    .addComponent(MobileNoLabel)
                     .addComponent(editMobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jButton1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(address)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(BillAddLabel)))
+                .addGap(26, 26, 26)
+                .addComponent(jButton1)
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -226,18 +239,18 @@ public class Update extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel address;
+    private javax.swing.JLabel BillAddLabel;
+    private javax.swing.JLabel CustomerInfoLabel;
+    private javax.swing.JLabel EmailLabel;
+    private javax.swing.JLabel LocalityLabel;
+    private javax.swing.JLabel MobileNoLabel;
+    private javax.swing.JLabel NameLabel;
     private javax.swing.JTextArea editAddress;
     private javax.swing.JTextField editEmail;
     private javax.swing.JTextField editLocality;
     private javax.swing.JTextField editMobile;
     private javax.swing.JTextField editName;
-    private javax.swing.JLabel email;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel locality;
-    private javax.swing.JLabel mobile;
-    private javax.swing.JLabel name;
     // End of variables declaration//GEN-END:variables
 }

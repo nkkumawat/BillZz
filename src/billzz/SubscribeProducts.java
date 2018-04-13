@@ -10,6 +10,7 @@ import billzz.Database.SqlConnection;
 import billzz.Lists.ProductPanel1;
 import billzz.Model.Customer;
 import billzz.Model.Product;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -28,6 +29,7 @@ public class SubscribeProducts extends javax.swing.JFrame {
         initComponents();
         myInits();
         getContentPane().setBackground(new java.awt.Color(100, 181, 246));
+        addProductLabel.setForeground(Color.WHITE);
     }
     public void myInits(){
         
@@ -67,6 +69,7 @@ public class SubscribeProducts extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         productList = new javax.swing.JList<>();
+        addProductLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,20 +80,28 @@ public class SubscribeProducts extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(productList);
 
+        addProductLabel.setFont(new java.awt.Font("Ubuntu", 1, 28)); // NOI18N
+        addProductLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        addProductLabel.setText("ADD PRODUCTS");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+                    .addComponent(addProductLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(addProductLabel)
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -147,6 +158,7 @@ public class SubscribeProducts extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel addProductLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<Product> productList;
     // End of variables declaration//GEN-END:variables

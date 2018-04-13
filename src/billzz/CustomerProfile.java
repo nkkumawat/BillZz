@@ -11,13 +11,11 @@ import billzz.Database.SqlConnection;
 import billzz.Lists.ProductPanel1;
 import billzz.Model.Bill;
 import billzz.Model.Customer;
-import billzz.Model.User;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import billzz.Model.Product;
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DateFormat;
@@ -27,14 +25,14 @@ import java.util.concurrent.TimeUnit;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 /**
  *
  * @author sonu
  */
-public class CustomerProfile extends javax.swing.JFrame {
+public final class CustomerProfile extends javax.swing.JFrame {
 
     /**
      * Creates new form CustomerProfile
@@ -42,7 +40,7 @@ public class CustomerProfile extends javax.swing.JFrame {
     private Double totalBill;
     public CustomerProfile() {
         initComponents();
-        GenerateQR.GenerateQRC(Customer.id+Customer.customerName);
+        GenerateQR.GenerateQRC(Customer.id+" "+Customer.customerName);
         fillProducts();
         myInit();
      
@@ -57,8 +55,8 @@ public class CustomerProfile extends javax.swing.JFrame {
         customerNewBill.setForeground(Color.white);
         myProducts.setForeground(Color.white);
         try{
-            System.out.print("QR/"+Customer.id+Customer.customerName);
-            BufferedImage myPicture = ImageIO.read(new File("QR/"+Customer.id+Customer.customerName+".png"));
+//            System.out.print("QR/"+Customer.id+Customer.customerName);
+            BufferedImage myPicture = ImageIO.read(new File("QR/"+Customer.id+" "+Customer.customerName+".png"));
             qrCodeLabel.setIcon(new ImageIcon(myPicture));
             
             BufferedImage avator = CreateAvator.createImageWithText(Customer.customerName.charAt(0)+"");
@@ -114,11 +112,13 @@ public class CustomerProfile extends javax.swing.JFrame {
                 refreshLabel.setToolTipText("Refresh");
                 
                 updateLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/update.png",30)));
-                updateLabel.setToolTipText("Refresh");
+                updateLabel.setToolTipText("Update");
                 
                 deleteLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/delete.png",30)));
-                deleteLabel.setToolTipText("Refresh");
-                  
+                deleteLabel.setToolTipText("Delete User");
+                
+                deleteProduct.setIcon(new ImageIcon(SetIcons.getIcon("./QR/delete.png",30)));
+                deleteProduct.setToolTipText("Delete Product");
             }
         }catch(Exception e) {
                System.out.print(e.toString());
@@ -180,6 +180,7 @@ public class CustomerProfile extends javax.swing.JFrame {
         refreshLabel = new javax.swing.JLabel();
         updateLabel = new javax.swing.JLabel();
         deleteLabel = new javax.swing.JLabel();
+        deleteProduct = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -201,7 +202,7 @@ public class CustomerProfile extends javax.swing.JFrame {
         jScrollPane1.setViewportView(myProductsList);
 
         myProducts.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
-        myProducts.setText("My Products");
+        myProducts.setText("MY PRODUCTS");
 
         addProductsLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -235,6 +236,17 @@ public class CustomerProfile extends javax.swing.JFrame {
         });
 
         deleteLabel.setPreferredSize(new java.awt.Dimension(30, 30));
+        deleteLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteLabelMouseClicked(evt);
+            }
+        });
+
+        deleteProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteProductMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -245,65 +257,61 @@ public class CustomerProfile extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(customerName)
                             .addComponent(customerAddress)
+                            .addComponent(customerNewBill)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(customerLastPayed)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cutomerLastPaidDate))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(customerEmail)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(customerMobile))
-                            .addComponent(customerNewBill)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(customerLastPayed)
+                                    .addComponent(customerEmail))
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cutomerLastPaidDate)
+                                    .addComponent(customerMobile)))
+                            .addComponent(customerName, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(myProducts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(qrCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(updateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(addProductsLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(paymentLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(payHistoryLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(refreshLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(deleteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                            .addComponent(myProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addProductsLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(paymentLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(payHistoryLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(qrCodeLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(deleteProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(refreshLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(customerName)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(customerAddress)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(customerMobile)
-                                    .addComponent(customerEmail))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(customerEmail)
+                                    .addComponent(customerMobile))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(customerLastPayed)
-                                    .addComponent(cutomerLastPaidDate))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(customerNewBill)
+                                    .addComponent(cutomerLastPaidDate))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(customerNewBill))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(57, 57, 57)
                         .addComponent(myProducts)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -315,12 +323,14 @@ public class CustomerProfile extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(payHistoryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(refreshLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(updateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(deleteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(164, 164, 164)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(refreshLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleteProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(132, 132, 132)
                         .addComponent(qrCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -362,6 +372,33 @@ public class CustomerProfile extends javax.swing.JFrame {
         s.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         s.setVisible(true);
     }//GEN-LAST:event_updateLabelMouseClicked
+
+    private void deleteLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteLabelMouseClicked
+        // TODO add your handling code here:
+        int selectedOption = JOptionPane.showConfirmDialog(null, 
+                                  "Do you wanna delete the user?", 
+                                  "Choose", 
+                                  JOptionPane.YES_NO_OPTION);
+        if(selectedOption == JOptionPane.YES_OPTION){
+            String deleteCustomer = "Delete from customer where id = '"+Customer.id+"'";
+            try {
+                Statement stmt = SqlConnection.getStat();
+                stmt.execute(deleteCustomer);
+                setVisible(false);
+                
+            } catch (Exception ex) {
+                System.out.print(ex.toString());
+            }
+            
+        }
+    }//GEN-LAST:event_deleteLabelMouseClicked
+
+    private void deleteProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteProductMouseClicked
+        // TODO add your handling code here:
+        UnsubscribeProduct s = new UnsubscribeProduct();
+        s.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        s.setVisible(true);
+    }//GEN-LAST:event_deleteProductMouseClicked
 
     /**
      * @param args the command line arguments
@@ -408,6 +445,7 @@ public class CustomerProfile extends javax.swing.JFrame {
     private javax.swing.JLabel customerNewBill;
     private javax.swing.JLabel cutomerLastPaidDate;
     private javax.swing.JLabel deleteLabel;
+    private javax.swing.JLabel deleteProduct;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel myProducts;

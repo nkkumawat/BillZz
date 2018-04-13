@@ -21,6 +21,14 @@ public class AddProducts extends javax.swing.JFrame {
     public AddProducts() {
         initComponents();
         getContentPane().setBackground(new java.awt.Color(100, 181, 246));
+        LangLabel.setForeground(Color.WHITE);
+        ProductInfoLabel.setForeground(Color.WHITE);
+        ProductNameLabel.setForeground(Color.WHITE);
+        RateLabel.setForeground(Color.WHITE);
+        ProductDescLabel.setForeground(Color.WHITE);
+        ProductInfoLabel.setForeground(Color.white);
+        addProduct.setBackground(Color.decode("#50AF00"));
+        addProduct.setForeground(Color.WHITE);
     }
 
     /**
@@ -36,34 +44,46 @@ public class AddProducts extends javax.swing.JFrame {
         productDesc = new javax.swing.JTextField();
         productLanguage = new javax.swing.JTextField();
         productRate = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        ProductNameLabel = new javax.swing.JLabel();
+        ProductDescLabel = new javax.swing.JLabel();
+        LangLabel = new javax.swing.JLabel();
+        RateLabel = new javax.swing.JLabel();
         addProduct = new javax.swing.JButton();
+        ProductInfoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        productName.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         productName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 productNameActionPerformed(evt);
             }
         });
 
+        productDesc.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+
+        productLanguage.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         productLanguage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 productLanguageActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("ProductName");
+        productRate.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
 
-        jLabel2.setText("Product Desc");
+        ProductNameLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        ProductNameLabel.setText("ProductName");
 
-        jLabel3.setText("Language");
+        ProductDescLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        ProductDescLabel.setText("Product Desc");
 
-        jLabel4.setText("Rate");
+        LangLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        LangLabel.setText("Language");
 
+        RateLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        RateLabel.setText("Rate");
+
+        addProduct.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         addProduct.setText("Add");
         addProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,50 +91,60 @@ public class AddProducts extends javax.swing.JFrame {
             }
         });
 
+        ProductInfoLabel.setFont(new java.awt.Font("Ubuntu", 1, 28)); // NOI18N
+        ProductInfoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ProductInfoLabel.setText("PRODUCT INFORMATION");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ProductInfoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(152, 152, 152)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(addProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
+                            .addComponent(ProductNameLabel)
+                            .addComponent(ProductDescLabel)
+                            .addComponent(LangLabel))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(productName, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(productName, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                             .addComponent(productDesc)
                             .addComponent(productLanguage)
-                            .addComponent(productRate))))
-                .addContainerGap(45, Short.MAX_VALUE))
+                            .addComponent(productRate)))
+                    .addComponent(RateLabel, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(124, 124, 124))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(73, 73, 73)
+                .addGap(39, 39, 39)
+                .addComponent(ProductInfoLabel)
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(productName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(ProductNameLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(productDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(ProductDescLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(productLanguage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(LangLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(productRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(RateLabel))
                 .addGap(39, 39, 39)
                 .addComponent(addProduct)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
@@ -188,11 +218,12 @@ public class AddProducts extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LangLabel;
+    private javax.swing.JLabel ProductDescLabel;
+    private javax.swing.JLabel ProductInfoLabel;
+    private javax.swing.JLabel ProductNameLabel;
+    private javax.swing.JLabel RateLabel;
     private javax.swing.JButton addProduct;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField productDesc;
     private javax.swing.JTextField productLanguage;
     private javax.swing.JTextField productName;

@@ -9,6 +9,7 @@ import SendEmail.SendEmail;
 import billzz.Database.SqlConnection;
 import billzz.Model.Bill;
 import billzz.Model.Customer;
+import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DateFormat;
@@ -28,6 +29,14 @@ public class RecordPayment extends javax.swing.JFrame {
         initComponents();
         myInits();
         getContentPane().setBackground(new java.awt.Color(100, 181, 246));
+        PayMentLabel.setForeground(Color.WHITE);
+        PayingLabel.setForeground(Color.WHITE);
+        TotalLabel.setForeground(Color.WHITE);
+        jLabel2.setForeground(Color.WHITE);
+        mode.setForeground(Color.WHITE);
+        totalBill.setForeground(Color.WHITE);
+        payButton.setBackground(Color.decode("#50AF00"));
+        payButton.setForeground(Color.WHITE);
     }
     public void myInits() {
         totalBill.setText(Bill.totalBill +"");
@@ -42,30 +51,40 @@ public class RecordPayment extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        d = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        TotalLabel = new javax.swing.JLabel();
+        PayingLabel = new javax.swing.JLabel();
         payingAmount = new javax.swing.JTextField();
         modeCombo = new javax.swing.JComboBox<>();
         mode = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         totalBill = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        PayMentLabel = new javax.swing.JLabel();
         payButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        d.setText("Total");
+        TotalLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        TotalLabel.setText("Total");
 
-        jLabel1.setText("Paying");
+        PayingLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        PayingLabel.setText("Paying");
 
+        payingAmount.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+
+        modeCombo.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         modeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Online", "Cash", "Cheque" }));
 
+        mode.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         mode.setText("Mode");
 
-        totalBill.setText("jLabel3");
+        totalBill.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        totalBill.setText("rupees");
 
-        jLabel3.setText("Payment");
+        PayMentLabel.setFont(new java.awt.Font("Ubuntu", 1, 28)); // NOI18N
+        PayMentLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PayMentLabel.setText("PAYMENT");
 
+        payButton.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         payButton.setText("Pay");
         payButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,41 +97,38 @@ public class RecordPayment extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(181, 181, 181)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(PayMentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(119, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(mode)
-                            .addComponent(d))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(totalBill)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(modeCombo, 0, 195, Short.MAX_VALUE)
-                                .addComponent(payingAmount))
-                            .addComponent(payButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(jLabel3)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addComponent(PayingLabel)
+                    .addComponent(mode)
+                    .addComponent(TotalLabel))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(payButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(payingAmount)
+                    .addComponent(totalBill)
+                    .addComponent(modeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(86, 86, 86))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel3)
-                .addGap(46, 46, 46)
+                .addGap(30, 30, 30)
+                .addComponent(PayMentLabel)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(d)
-                    .addComponent(jLabel2)
+                    .addComponent(TotalLabel)
                     .addComponent(totalBill))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(PayingLabel)
                     .addComponent(payingAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -120,7 +136,9 @@ public class RecordPayment extends javax.swing.JFrame {
                     .addComponent(mode))
                 .addGap(27, 27, 27)
                 .addComponent(payButton)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -201,10 +219,10 @@ public class RecordPayment extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel d;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel PayMentLabel;
+    private javax.swing.JLabel PayingLabel;
+    private javax.swing.JLabel TotalLabel;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel mode;
     private javax.swing.JComboBox<String> modeCombo;
     private javax.swing.JButton payButton;

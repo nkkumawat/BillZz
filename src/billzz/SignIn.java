@@ -7,6 +7,7 @@ package billzz;
 import GenerateQR.GenerateQR;
 import billzz.Database.SqlConnection;
 import billzz.Model.User;
+import java.awt.Color;
 import java.sql.*;
 
 /**
@@ -21,6 +22,14 @@ public class SignIn extends javax.swing.JFrame {
     public SignIn() {
         initComponents();
         getContentPane().setBackground(new java.awt.Color(100, 181, 246));
+        LogIn.setForeground(Color.WHITE);
+        PassWordLabel.setForeground(Color.WHITE);
+        UserNameLabel.setForeground(Color.WHITE);
+        signin.setBackground(Color.decode("#50AF00"));
+        signup.setBackground(Color.decode("#50AF00"));
+        signin.setForeground(Color.WHITE);
+        signup.setForeground(Color.WHITE);
+     
     }
 
 
@@ -34,25 +43,31 @@ public class SignIn extends javax.swing.JFrame {
     private void initComponents() {
 
         username = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        UserNameLabel = new javax.swing.JLabel();
         password = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
+        PassWordLabel = new javax.swing.JLabel();
         signup = new javax.swing.JButton();
         signin = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        LogIn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        username.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Username");
+        UserNameLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        UserNameLabel.setText("Username");
 
-        jLabel2.setText("Password");
+        password.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
 
+        PassWordLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        PassWordLabel.setText("Password");
+
+        signup.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         signup.setText("SignUp");
         signup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +75,7 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
+        signin.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         signin.setText("SignIn");
         signin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,9 +83,9 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("LOGIN");
+        LogIn.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        LogIn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LogIn.setText("LOGIN");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,38 +93,38 @@ public class SignIn extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(UserNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PassWordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(signup)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(signin))
                     .addComponent(password)
                     .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(58, 58, 58))
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(LogIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jLabel3)
+                .addComponent(LogIn)
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(UserNameLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(PassWordLabel))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(signup)
                     .addComponent(signin))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -203,9 +219,9 @@ public class SignIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel LogIn;
+    private javax.swing.JLabel PassWordLabel;
+    private javax.swing.JLabel UserNameLabel;
     private javax.swing.JPasswordField password;
     private javax.swing.JButton signin;
     private javax.swing.JButton signup;

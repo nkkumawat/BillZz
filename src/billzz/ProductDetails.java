@@ -7,8 +7,10 @@ package billzz;
 
 import billzz.Database.SqlConnection;
 import billzz.Model.Products;
+import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,6 +25,10 @@ public class ProductDetails extends javax.swing.JFrame {
         initComponents();
         myInits();
         getContentPane().setBackground(new java.awt.Color(100, 181, 246));
+        jButton1.setBackground(Color.decode("#50AF00"));
+        jButton1.setForeground(Color.WHITE);
+        DeleteBtn.setBackground(Color.decode("#50AF00"));
+        DeleteBtn.setForeground(Color.WHITE);
     }
     public void myInits() {
         try{
@@ -58,25 +64,33 @@ public class ProductDetails extends javax.swing.JFrame {
         language = new javax.swing.JTextField();
         rate = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        DeleteBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         jLabel2.setText("Description");
 
+        jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         jLabel3.setText("Language");
 
+        jLabel4.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         jLabel4.setText("Rate");
 
-        name.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        name.setFont(new java.awt.Font("Ubuntu", 1, 28)); // NOI18N
         name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        name.setText("name");
+        name.setText("PRODUCT NAME");
 
+        description.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         description.setText("desc");
 
+        language.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         language.setText("Lang");
 
+        rate.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         rate.setText("rate");
 
+        jButton1.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         jButton1.setText("Update");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,18 +98,29 @@ public class ProductDetails extends javax.swing.JFrame {
             }
         });
 
+        DeleteBtn.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        DeleteBtn.setText("Delete");
+        DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(89, 89, 89)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(43, 43, 43)
+                        .addComponent(DeleteBtn))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -104,16 +129,16 @@ public class ProductDetails extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(description)
-                            .addComponent(language, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                            .addComponent(rate))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                            .addComponent(language)
+                            .addComponent(rate, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(25, 25, 25)
                 .addComponent(name)
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -125,9 +150,11 @@ public class ProductDetails extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(rate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DeleteBtn)
+                    .addComponent(jButton1))
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -152,6 +179,26 @@ public class ProductDetails extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
+        // TODO add your handling code here:
+        int selectedOption = JOptionPane.showConfirmDialog(null, 
+                                  "Do you wanna delete the product?", 
+                                  "Choose", 
+                                  JOptionPane.YES_NO_OPTION);
+        if(selectedOption == JOptionPane.YES_OPTION){
+            String deleteProduct = "Delete from product where id = '"+Products.productId+"'";
+            try {
+                Statement stmt = SqlConnection.getStat();
+                stmt.execute(deleteProduct);
+                setVisible(false);
+                
+            } catch (Exception ex) {
+                System.out.print(ex.toString());
+            }
+            
+        }
+    }//GEN-LAST:event_DeleteBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,6 +236,7 @@ public class ProductDetails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DeleteBtn;
     private javax.swing.JTextField description;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;

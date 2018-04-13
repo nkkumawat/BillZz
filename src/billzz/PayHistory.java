@@ -12,6 +12,7 @@ import billzz.Lists.ProductPanel1;
 import billzz.Model.Customer;
 import billzz.Model.Payment;
 import billzz.Model.Product;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -52,6 +53,7 @@ public class PayHistory extends javax.swing.JFrame {
         }
         paymentHistoryList.setModel(defaultListModel);
         paymentHistoryList.setCellRenderer(new PayHistoryPanel());
+        pHistoryLabel.setForeground(Color.WHITE);
         getContentPane().setBackground(new java.awt.Color(100, 181, 246));
     }
     /**
@@ -65,10 +67,15 @@ public class PayHistory extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         paymentHistoryList = new javax.swing.JList<>();
+        pHistoryLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jScrollPane1.setViewportView(paymentHistoryList);
+
+        pHistoryLabel.setFont(new java.awt.Font("Ubuntu", 1, 28)); // NOI18N
+        pHistoryLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pHistoryLabel.setText("PAY HISTORY");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,14 +83,18 @@ public class PayHistory extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
+                    .addComponent(pHistoryLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(pHistoryLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -127,6 +138,7 @@ public class PayHistory extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel pHistoryLabel;
     private javax.swing.JList<Payment> paymentHistoryList;
     // End of variables declaration//GEN-END:variables
 }
