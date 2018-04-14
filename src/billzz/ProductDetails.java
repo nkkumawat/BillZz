@@ -39,8 +39,7 @@ public class ProductDetails extends javax.swing.JFrame {
                 name.setText(rs.getString("product_name"));
                 description.setText(rs.getString("product_desc"));
                 language.setText(rs.getString("language"));
-                rate.setText(rs.getString("product_rate"));
-                
+                rate.setText(rs.getString("product_rate"));                
             }
         }catch(Exception e){
             System.out.print(e.toString());
@@ -175,7 +174,7 @@ public class ProductDetails extends javax.swing.JFrame {
                 this.setVisible(false);
             }
         }catch(Exception e){
-            
+             javax.swing.JOptionPane.showMessageDialog(null, e.toString(), "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -191,10 +190,10 @@ public class ProductDetails extends javax.swing.JFrame {
             try {
                 Statement stmt = SqlConnection.getStat();
                 stmt.execute(deleteProduct);
-                setVisible(false);
-                
+                setVisible(false);               
             } catch (Exception ex) {
                 System.out.print(ex.toString());
+                javax.swing.JOptionPane.showMessageDialog(null, ex.toString(), "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             }
             
         }

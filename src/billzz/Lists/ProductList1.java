@@ -48,7 +48,7 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
     }
    
     public void myInits() {
-       addFocusListener(new CustomFocusListener());  
+//       addFocusListener(new CustomFocusListener());  
         try {
             
             refreshLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/refresh.png" , 50)));
@@ -77,16 +77,16 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
         }
     } 
     
-    class CustomFocusListener implements FocusListener{
-         @Override
-        public void focusGained(FocusEvent e) {
-            fillProductList();
-        }
-        @Override
-        public void focusLost(FocusEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-   }
+//    class CustomFocusListener implements FocusListener{
+//         @Override
+//        public void focusGained(FocusEvent e) {
+//            fillProductList();
+//        }
+//        @Override
+//        public void focusLost(FocusEvent e) {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//   }
     public void fillProductList(){
         DefaultListModel<Product> defaultListModel = new DefaultListModel<>();
         try{
@@ -171,6 +171,13 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
         jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         jList4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -368,6 +375,12 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
        a.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
        a.setVisible(true);
     }//GEN-LAST:event_qrScanMouseClicked
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        // TODO add your handling code here:
+          fillProductList();
+          fillCustomerList();
+    }//GEN-LAST:event_formWindowGainedFocus
 
      
  

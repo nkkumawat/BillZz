@@ -122,9 +122,11 @@ public class WebcamQRCodeScan extends javax.swing.JFrame implements Runnable, Th
                     CustomerProfile c = new CustomerProfile();
                     c.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                     c.setVisible(true);
-                    this.setVisible(false);
+                    
                     try {
-                        this.finalize();
+                       this.finalize();
+                       webcam.close();
+                       this.setVisible(false);
                     } catch (Throwable ex) {
                         Logger.getLogger(WebcamQRCodeScan.class.getName()).log(Level.SEVERE, null, ex);
                     }                 

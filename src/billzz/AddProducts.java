@@ -174,7 +174,7 @@ public class AddProducts extends javax.swing.JFrame {
                 +"values('"+product_name+"' , '"+product_rate+"' , '"+product_desc+"' , '"+product_lang+"')";
                 stmt.execute(insertProduct);
                 this.setVisible(false);
-                javax.swing.JOptionPane.showMessageDialog(null, "Product Added Successfully", "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+//                javax.swing.JOptionPane.showMessageDialog(null, "Product Added Successfully", "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             }catch(Exception e){
                 javax.swing.JOptionPane.showMessageDialog(null, e.toString(), "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             }

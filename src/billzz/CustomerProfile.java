@@ -43,9 +43,6 @@ public final class CustomerProfile extends javax.swing.JFrame {
         GenerateQR.GenerateQRC(Customer.id+" "+Customer.customerName);
         fillProducts();
         myInit();
-     
-    }
-    public void myInit()  {
         customerName.setForeground(Color.white);
         customerAddress.setForeground(Color.white);
         customerEmail.setForeground(Color.white);
@@ -55,7 +52,6 @@ public final class CustomerProfile extends javax.swing.JFrame {
         customerNewBill.setForeground(Color.white);
         myProducts.setForeground(Color.white);
         try{
-//            System.out.print("QR/"+Customer.id+Customer.customerName);
             BufferedImage myPicture = ImageIO.read(new File("QR/"+Customer.id+" "+Customer.customerName+".png"));
             qrCodeLabel.setIcon(new ImageIcon(myPicture));
             
@@ -65,7 +61,35 @@ public final class CustomerProfile extends javax.swing.JFrame {
             g2d.drawImage(avator, 0, 0, 100, 100, null);
             g2d.dispose();
             imageLabel.setIcon(new ImageIcon(outputImage));
+            
+            addProductsLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/add.png" ,30)));
+            addProductsLabel.setToolTipText("Add Product");
 
+            paymentLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/pay.png",30)));
+            paymentLabel.setToolTipText("Payment Record");
+
+            payHistoryLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/history.png",30)));
+            payHistoryLabel.setToolTipText("Payment History");
+
+            refreshLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/refresh.png",30)));
+            refreshLabel.setToolTipText("Refresh");
+
+            updateLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/update.png",30)));
+            updateLabel.setToolTipText("Update");
+
+            deleteLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/delete.png",30)));
+            deleteLabel.setToolTipText("Delete User");
+
+            deleteProduct.setIcon(new ImageIcon(SetIcons.getIcon("./QR/delete.png",30)));
+            deleteProduct.setToolTipText("Delete Product");
+        }catch(Exception e) {
+            
+        }
+    }
+    public void myInit()  {
+        
+        try{
+//            System.out.print("QR/"+Customer.id+Customer.customerName);            
             Statement stmt = SqlConnection.getStat();
             String sql = "select * from customer where id = '"+Customer.id+"'";
             ResultSet rs = stmt.executeQuery(sql);
@@ -88,37 +112,30 @@ public final class CustomerProfile extends javax.swing.JFrame {
                 
                 long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
                 long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS)+1;
-                String sql1 = "select sum(B.product_rate * A.qty) from subscription A , product B where A.customer_id = '"+Customer.id+"'\n"
+                String sql1 = "select sum(B.product_rate) from subscription A , product B where A.customer_id = '"+Customer.id+"'\n"
                         + "and A.product_id = B.id";
                 ResultSet rs1 = stmt.executeQuery(sql1);
                 totalBill = 0.0;
+                System.out.print(totalBill +" ");
                 if(rs1.next()){
                     totalBill = rs1.getDouble(1);
                 }
+                System.out.print(totalBill +" ");
                 totalBill*=diff;
+                System.out.print(totalBill +" ");
                 totalBill += unBilled;
-                customerNewBill.setText("New Bill : " + totalBill);
+                System.out.print(totalBill +" \n");
                 
-                addProductsLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/add.png" ,30)));
-                addProductsLabel.setToolTipText("Add Product");
                 
-                paymentLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/pay.png",30)));
-                paymentLabel.setToolTipText("Payment Record");
-                
-                payHistoryLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/history.png",30)));
-                payHistoryLabel.setToolTipText("Payment History");
-                
-                refreshLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/refresh.png",30)));
-                refreshLabel.setToolTipText("Refresh");
-                
-                updateLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/update.png",30)));
-                updateLabel.setToolTipText("Update");
-                
-                deleteLabel.setIcon(new ImageIcon(SetIcons.getIcon("./QR/delete.png",30)));
-                deleteLabel.setToolTipText("Delete User");
-                
-                deleteProduct.setIcon(new ImageIcon(SetIcons.getIcon("./QR/delete.png",30)));
-                deleteProduct.setToolTipText("Delete Product");
+                sql = "select sum(paid_amount) from payment where customer_id = '"+Customer.id+"'";
+                ResultSet rs2 = stmt.executeQuery(sql);
+              
+     
+                if(rs1.next()){
+                    System.out.print(rs2.getDouble(1) +" \n");
+                    totalBill -= rs2.getDouble(1);
+                }
+                customerNewBill.setText("New Bill : " + totalBill);                                
             }
         }catch(Exception e) {
                System.out.print(e.toString());
@@ -183,6 +200,13 @@ public final class CustomerProfile extends javax.swing.JFrame {
         deleteProduct = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         customerName.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         customerName.setText("Name");
@@ -399,6 +423,12 @@ public final class CustomerProfile extends javax.swing.JFrame {
         s.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         s.setVisible(true);
     }//GEN-LAST:event_deleteProductMouseClicked
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        // TODO add your handling code here:
+        fillProducts();
+        myInit();
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments

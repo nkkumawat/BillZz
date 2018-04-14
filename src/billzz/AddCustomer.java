@@ -209,7 +209,7 @@ public class AddCustomer extends javax.swing.JFrame {
                         + "' , '"+last_bill_amt+"' , '"+last_pay_time+"' , '"+unbilled_amt+"')";
                 stmt.execute(insertCustomer);
                 this.setVisible(false);
-                javax.swing.JOptionPane.showMessageDialog(null, "Customer Added Successfully", "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+//                javax.swing.JOptionPane.showMessageDialog(null, "Customer Added Successfully", "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             }catch(Exception e){
                 javax.swing.JOptionPane.showMessageDialog(null, e.toString(), "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             }

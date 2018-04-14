@@ -46,8 +46,8 @@ public class Update extends javax.swing.JFrame {
                 editLocality.setText(rs.getString("locality"));
             }
         }catch(Exception e){
-                    
-               }
+             javax.swing.JOptionPane.showMessageDialog(null, e.toString(), "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        }
         editName.setEditable(false);
         
     }
@@ -196,7 +196,7 @@ public class Update extends javax.swing.JFrame {
                 String updateCustomer = "update customer set locality='"+flocality+"',email='"+femail+"',mobile='"+fmobile+"', billing_address='"+faddress+"' where id = "+id;
                 stmt.execute(updateCustomer);
                 this.setVisible(false);
-                javax.swing.JOptionPane.showMessageDialog(null, "Customer Information Updated Successfully", "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+//                javax.swing.JOptionPane.showMessageDialog(null, "Customer Information Updated Successfully", "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             }catch(Exception e){
                 javax.swing.JOptionPane.showMessageDialog(null, e.toString(), "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             }

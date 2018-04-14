@@ -36,7 +36,7 @@ public class SubscribeProducts extends javax.swing.JFrame {
         DefaultListModel<Product> defaultListModel = new DefaultListModel<>();
         try{
             Statement stmt = SqlConnection.getStat();
-            String sql = "select * from product order by id desc";
+            String sql = "select * from product where id not in (select product_id from subscription where customer_id = '"+Customer.id+"') order by id desc";
             ResultSet rs = stmt.executeQuery(sql);
             int flag = 0;
             while(rs.next()){

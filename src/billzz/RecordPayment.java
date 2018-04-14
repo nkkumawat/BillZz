@@ -164,16 +164,16 @@ public class RecordPayment extends javax.swing.JFrame {
                 sql = "update customer set last_bill_amount = '"+billAmount+"', last_bill_date = '"+paidDate+"' , unbilled_amount = '"+remaining +"' where id = '"+Customer.id+"'";
 //                System.out.print(sql);
                 stmt.execute(sql);
-                sql = "select email from customer where id = '"+Customer.id+"'";
+//                sql = "select email from customer where id = '"+Customer.id+"'";
 //                System.out.print(sql);
-                ResultSet rs = stmt.executeQuery(sql);
+//                ResultSet rs = stmt.executeQuery(sql);
 //                System.out.print(rs.getString("email"));
-                SendEmail.send(rs.getString("email") , "Bill Paid" , "total bill paid = " + billAmount + " \n" +" Remaining is : "+remaining );
+//                SendEmail.send(rs.getString("email") , "Bill Paid" , "total bill paid = " + billAmount + " \n" +" Remaining is : "+remaining );
                 this.setVisible(false);
-                javax.swing.JOptionPane.showMessageDialog(null, "Payment Recorded Successfully \n Email sended to Customer", "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+//                javax.swing.JOptionPane.showMessageDialog(null, "Payment Recorded Successfully \n Email sended to Customer", "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             }catch(Exception e){
                 System.out.print(e.toString());
-               javax.swing.JOptionPane.showMessageDialog(null, "Payment Record Error", "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE); 
+                javax.swing.JOptionPane.showMessageDialog(null, "Payment Record Error", "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE); 
             }
       
             
