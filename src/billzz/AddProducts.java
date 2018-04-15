@@ -53,37 +53,37 @@ public class AddProducts extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        productName.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        productName.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         productName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 productNameActionPerformed(evt);
             }
         });
 
-        productDesc.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        productDesc.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
-        productLanguage.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        productLanguage.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         productLanguage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 productLanguageActionPerformed(evt);
             }
         });
 
-        productRate.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        productRate.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
-        ProductNameLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        ProductNameLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         ProductNameLabel.setText("ProductName");
 
-        ProductDescLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        ProductDescLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         ProductDescLabel.setText("Product Desc");
 
-        LangLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        LangLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         LangLabel.setText("Language");
 
-        RateLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        RateLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         RateLabel.setText("Rate");
 
-        addProduct.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        addProduct.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         addProduct.setText("Add");
         addProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,7 +114,7 @@ public class AddProducts extends javax.swing.JFrame {
                             .addComponent(LangLabel))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(productName, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                            .addComponent(productName, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                             .addComponent(productDesc)
                             .addComponent(productLanguage)
                             .addComponent(productRate)))
@@ -144,7 +144,7 @@ public class AddProducts extends javax.swing.JFrame {
                     .addComponent(RateLabel))
                 .addGap(39, 39, 39)
                 .addComponent(addProduct)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         pack();

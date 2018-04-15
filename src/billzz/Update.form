@@ -50,7 +50,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="94" max="32767" attributes="0"/>
+              <EmptySpace pref="121" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,7 +59,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Component id="CustomerInfoLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="35" max="32767" attributes="0"/>
+              <EmptySpace pref="50" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="editName" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="NameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -107,7 +107,7 @@
     <Component class="javax.swing.JLabel" name="NameLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="1"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Full Name"/>
       </Properties>
@@ -115,7 +115,7 @@
     <Component class="javax.swing.JLabel" name="LocalityLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="1"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Locality"/>
       </Properties>
@@ -123,7 +123,7 @@
     <Component class="javax.swing.JLabel" name="EmailLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="1"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="E-mail"/>
       </Properties>
@@ -131,7 +131,7 @@
     <Component class="javax.swing.JLabel" name="MobileNoLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="1"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Mobile No."/>
       </Properties>
@@ -139,7 +139,7 @@
     <Component class="javax.swing.JLabel" name="BillAddLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="1"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Billing Address"/>
       </Properties>
@@ -147,7 +147,7 @@
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="1"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Update"/>
       </Properties>
@@ -158,28 +158,28 @@
     <Component class="javax.swing.JTextField" name="editName">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="0"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="editLocality">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="0"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="editEmail">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="0"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="editMobile">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="0"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
       </Properties>
     </Component>
@@ -194,7 +194,7 @@
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Ubuntu" size="20" style="1"/>
+              <Font name="Ubuntu" size="18" style="0"/>
             </Property>
             <Property name="rows" type="int" value="5"/>
           </Properties>

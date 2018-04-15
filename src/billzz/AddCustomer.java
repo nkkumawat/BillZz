@@ -63,31 +63,31 @@ public class AddCustomer extends javax.swing.JFrame {
         CustomerInfoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CustomerInfoLabel.setText("CUSTOMER INFORMATION");
 
-        NameLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        NameLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         NameLabel.setText("Full Name");
 
-        LocalityLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        LocalityLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         LocalityLabel.setText("Locality");
 
-        EmailLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        EmailLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         EmailLabel.setText("E-mail");
 
-        MobileNoLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        MobileNoLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         MobileNoLabel.setText("Mobile No.");
 
-        BillAddLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        BillAddLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         BillAddLabel.setText("Billing Address");
 
-        customerName.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        customerName.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
-        email.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        email.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailActionPerformed(evt);
             }
         });
 
-        mobileNumber.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        mobileNumber.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         mobileNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mobileNumberActionPerformed(evt);
@@ -95,18 +95,18 @@ public class AddCustomer extends javax.swing.JFrame {
         });
 
         billAddress.setColumns(20);
-        billAddress.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        billAddress.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         billAddress.setRows(5);
         jScrollPane2.setViewportView(billAddress);
 
-        locality.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        locality.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         locality.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 localityActionPerformed(evt);
             }
         });
 
-        submit.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        submit.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         submit.setText("Add");
         submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,7 +145,7 @@ public class AddCustomer extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(68, Short.MAX_VALUE)
+                .addContainerGap(83, Short.MAX_VALUE)
                 .addComponent(CustomerInfoLabel)
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

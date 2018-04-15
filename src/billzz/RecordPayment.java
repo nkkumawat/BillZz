@@ -63,28 +63,28 @@ public class RecordPayment extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        TotalLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        TotalLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         TotalLabel.setText("Total");
 
-        PayingLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        PayingLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         PayingLabel.setText("Paying");
 
-        payingAmount.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        payingAmount.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
-        modeCombo.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        modeCombo.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         modeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Online", "Cash", "Cheque" }));
 
-        mode.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        mode.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         mode.setText("Mode");
 
-        totalBill.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        totalBill.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         totalBill.setText("rupees");
 
         PayMentLabel.setFont(new java.awt.Font("Ubuntu", 1, 28)); // NOI18N
         PayMentLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PayMentLabel.setText("PAYMENT");
 
-        payButton.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        payButton.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         payButton.setText("Pay");
         payButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +104,7 @@ public class RecordPayment extends javax.swing.JFrame {
                 .addComponent(PayMentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(119, Short.MAX_VALUE)
+                .addContainerGap(128, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PayingLabel)
                     .addComponent(mode)
@@ -138,7 +138,7 @@ public class RecordPayment extends javax.swing.JFrame {
                 .addComponent(payButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();

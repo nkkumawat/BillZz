@@ -40,7 +40,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="productName" pref="240" max="32767" attributes="0"/>
+                          <Component id="productName" pref="255" max="32767" attributes="0"/>
                           <Component id="productDesc" alignment="0" max="32767" attributes="0"/>
                           <Component id="productLanguage" alignment="0" max="32767" attributes="0"/>
                           <Component id="productRate" alignment="0" max="32767" attributes="0"/>
@@ -79,7 +79,7 @@
               </Group>
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Component id="addProduct" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="53" max="32767" attributes="0"/>
+              <EmptySpace pref="68" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -88,7 +88,7 @@
     <Component class="javax.swing.JTextField" name="productName">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="0"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
       </Properties>
       <Events>
@@ -98,14 +98,14 @@
     <Component class="javax.swing.JTextField" name="productDesc">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="0"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="productLanguage">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="0"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
       </Properties>
       <Events>
@@ -115,14 +115,14 @@
     <Component class="javax.swing.JTextField" name="productRate">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="0"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="ProductNameLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="0"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="ProductName"/>
       </Properties>
@@ -130,7 +130,7 @@
     <Component class="javax.swing.JLabel" name="ProductDescLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="0"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Product Desc"/>
       </Properties>
@@ -138,7 +138,7 @@
     <Component class="javax.swing.JLabel" name="LangLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="0"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Language"/>
       </Properties>
@@ -146,7 +146,7 @@
     <Component class="javax.swing.JLabel" name="RateLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="0"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Rate"/>
       </Properties>
@@ -154,7 +154,7 @@
     <Component class="javax.swing.JButton" name="addProduct">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ubuntu" size="20" style="0"/>
+          <Font name="Ubuntu" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Add"/>
       </Properties>

@@ -81,22 +81,22 @@ public class Update extends javax.swing.JFrame {
         CustomerInfoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CustomerInfoLabel.setText("CUSTOMER INFORMATION");
 
-        NameLabel.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
+        NameLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         NameLabel.setText("Full Name");
 
-        LocalityLabel.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
+        LocalityLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         LocalityLabel.setText("Locality");
 
-        EmailLabel.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
+        EmailLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         EmailLabel.setText("E-mail");
 
-        MobileNoLabel.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
+        MobileNoLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         MobileNoLabel.setText("Mobile No.");
 
-        BillAddLabel.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
+        BillAddLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         BillAddLabel.setText("Billing Address");
 
-        jButton1.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jButton1.setText("Update");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,16 +104,16 @@ public class Update extends javax.swing.JFrame {
             }
         });
 
-        editName.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        editName.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
-        editLocality.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        editLocality.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
-        editEmail.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        editEmail.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
-        editMobile.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        editMobile.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
         editAddress.setColumns(20);
-        editAddress.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
+        editAddress.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         editAddress.setRows(5);
         jScrollPane1.setViewportView(editAddress);
 
@@ -143,14 +143,14 @@ public class Update extends javax.swing.JFrame {
                             .addComponent(editLocality, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(editName, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(CustomerInfoLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NameLabel))

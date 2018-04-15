@@ -67,29 +67,33 @@ public class ProductDetails extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(246, 238, 238));
         jLabel2.setText("Description");
 
-        jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(246, 238, 238));
         jLabel3.setText("Language");
 
-        jLabel4.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(246, 238, 238));
         jLabel4.setText("Rate");
 
         name.setFont(new java.awt.Font("Ubuntu", 1, 28)); // NOI18N
+        name.setForeground(new java.awt.Color(253, 243, 243));
         name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name.setText("PRODUCT NAME");
 
-        description.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        description.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         description.setText("desc");
 
-        language.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        language.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         language.setText("Lang");
 
-        rate.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        rate.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         rate.setText("rate");
 
-        jButton1.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jButton1.setText("Update");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,7 +101,7 @@ public class ProductDetails extends javax.swing.JFrame {
             }
         });
 
-        DeleteBtn.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        DeleteBtn.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         DeleteBtn.setText("Delete");
         DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +141,7 @@ public class ProductDetails extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(name)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
