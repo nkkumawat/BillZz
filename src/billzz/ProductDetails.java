@@ -173,7 +173,7 @@ public class ProductDetails extends javax.swing.JFrame {
             if(productRate.equals("") || productDesc.equals("") || productLang.equals("")){
                  javax.swing.JOptionPane.showMessageDialog(null, "Fill All Feilds", "InfoBox:",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             }else {
-                String sql = "update product set product_rate = '"+productRate+"' , product_desc = '"+productDesc+"' , language = '"+productLang+"'";
+                String sql = "update product set product_rate = '"+productRate+"' , product_desc = '"+productDesc+"' , language = '"+productLang+"' where id = '"+Products.productId+"'";
                 stmt.execute(sql);
                 this.setVisible(false);
             }
