@@ -87,7 +87,8 @@ public final class CustomerProfile extends javax.swing.JFrame {
         }
     }
     public void myInit()  {
-        
+         pack();
+        setLocationRelativeTo(null);
         try{
 //            System.out.print("QR/"+Customer.id+Customer.customerName);            
             Statement stmt = SqlConnection.getStat();

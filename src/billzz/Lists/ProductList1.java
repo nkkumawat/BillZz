@@ -45,6 +45,8 @@ public class ProductList1  extends javax.swing.JFrame implements ActionListener 
         myInits();
         helloUser.setText("Hello : " +User.username);
         helloUser.setForeground(Color.white);
+         pack();
+        setLocationRelativeTo(null);
     }
    
     public void myInits() {

@@ -30,6 +30,8 @@ public class UnsubscribeProduct extends javax.swing.JFrame {
         myInits();
         deleteProductLabel.setForeground(Color.white);
         getContentPane().setBackground(new java.awt.Color(100, 181, 246));
+         pack();
+        setLocationRelativeTo(null);
     }
     
     public void myInits(){

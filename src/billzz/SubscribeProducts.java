@@ -30,6 +30,8 @@ public class SubscribeProducts extends javax.swing.JFrame {
         myInits();
         getContentPane().setBackground(new java.awt.Color(100, 181, 246));
         addProductLabel.setForeground(Color.WHITE);
+         pack();
+        setLocationRelativeTo(null);
     }
     public void myInits(){
         

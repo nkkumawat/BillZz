@@ -29,6 +29,8 @@ public class ProductDetails extends javax.swing.JFrame {
         jButton1.setForeground(Color.WHITE);
         DeleteBtn.setBackground(Color.decode("#50AF00"));
         DeleteBtn.setForeground(Color.WHITE);
+         pack();
+        setLocationRelativeTo(null);
     }
     public void myInits() {
         try{

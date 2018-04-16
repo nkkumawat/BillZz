@@ -37,6 +37,8 @@ public class RecordPayment extends javax.swing.JFrame {
         totalBill.setForeground(Color.WHITE);
         payButton.setBackground(Color.decode("#50AF00"));
         payButton.setForeground(Color.WHITE);
+         pack();
+        setLocationRelativeTo(null);
     }
     public void myInits() {
         totalBill.setText(Bill.totalBill +"");

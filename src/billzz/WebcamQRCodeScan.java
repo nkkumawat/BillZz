@@ -44,7 +44,7 @@ public class WebcamQRCodeScan extends javax.swing.JFrame implements Runnable, Th
     private static final long serialVersionUID = 6441489157408381878L;
 
     private Executor executor = Executors.newSingleThreadExecutor(this);
-
+    
     private Webcam webcam = null;
     private WebcamPanel panel = null;
     public WebcamQRCodeScan() {
@@ -63,6 +63,8 @@ public class WebcamQRCodeScan extends javax.swing.JFrame implements Runnable, Th
         close.setBackground(Color.decode("#50AF00"));
         close.setForeground(Color.WHITE);
         getContentPane().setBackground(new java.awt.Color(100, 181, 246));
+         pack();
+        setLocationRelativeTo(null);
     }
 
     /**

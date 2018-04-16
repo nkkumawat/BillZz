@@ -29,6 +29,8 @@ public class AddProducts extends javax.swing.JFrame {
         ProductInfoLabel.setForeground(Color.white);
         addProduct.setBackground(Color.decode("#50AF00"));
         addProduct.setForeground(Color.WHITE);
+         pack();
+        setLocationRelativeTo(null);
     }
 
     /**

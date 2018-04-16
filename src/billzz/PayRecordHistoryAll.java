@@ -32,6 +32,8 @@ public class PayRecordHistoryAll extends javax.swing.JFrame {
     public PayRecordHistoryAll() {
         initComponents();
         myInits();
+         pack();
+        setLocationRelativeTo(null);
     }
     
     

@@ -34,6 +34,8 @@ public class Update extends javax.swing.JFrame {
         NameLabel.setForeground(Color.WHITE);
         jButton1.setBackground(Color.decode("#50AF00"));
         jButton1.setForeground(Color.WHITE);
+         pack();
+        setLocationRelativeTo(null);
         try{
              Statement stmt = SqlConnection.getStat();
             String sql = "select * from customer where id = '"+Customer.id+"'";

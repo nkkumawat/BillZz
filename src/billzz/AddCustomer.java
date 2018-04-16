@@ -32,6 +32,8 @@ public class AddCustomer extends javax.swing.JFrame {
         NameLabel.setForeground(Color.WHITE);
         submit.setBackground(Color.decode("#50AF00"));
         submit.setForeground(Color.WHITE);
+         pack();
+        setLocationRelativeTo(null);
     }
 
     /**

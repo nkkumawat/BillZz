@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /**
  *
@@ -30,6 +31,7 @@ public class SignIn extends javax.swing.JFrame {
     public SignIn() {
         initComponents();
         myInits();
+        
         getContentPane().setBackground(new java.awt.Color(100, 181, 246));
         LogIn.setForeground(Color.WHITE);
         PassWordLabel.setForeground(Color.WHITE);
@@ -47,7 +49,14 @@ public class SignIn extends javax.swing.JFrame {
             divider.setIcon(new ImageIcon(inputImage));
         }catch(Exception e) {
 
-        }    
+        }   
+        
+        pack();
+        setLocationRelativeTo(null);
+//        setVisible(true);
+//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Already there
+////        setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        setUndecorated(true);
     }
     
     public void myInits() {

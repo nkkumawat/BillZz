@@ -30,6 +30,8 @@ public class PayHistory extends javax.swing.JFrame {
     public PayHistory() {
         initComponents();
         myInits();
+         pack();
+        setLocationRelativeTo(null);
     }
     public  void myInits(){
         DefaultListModel<Payment> defaultListModel = new DefaultListModel<>();

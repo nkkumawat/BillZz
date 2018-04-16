@@ -21,7 +21,8 @@ public class BillZz {
         new Init();
         new SqlConnection();
 //        start SignIn
-        new SignIn().setVisible(true);
+//        new SignIn().setVisible(true);
+          new Splash().setVisible(true);
 //        new AddProducts().setVisible(true);
 //        new CustomerProfile().setVisible(true);
         
